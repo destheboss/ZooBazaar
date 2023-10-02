@@ -11,20 +11,36 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using BLL.Managers;
+using DAL;
 
 namespace ZooBazaar.Forms
 {
     public partial class LogIn : Form
     {
-       
-        public LogIn()
+        private Action<User> closeForm;
+        private UserManager userManager;
+
+        public LogIn(Action<User> closeForm)
         {
+            userManager = new UserManager(new UserDataAccess());
+            this.closeForm = closeForm;
             InitializeComponent();
-            
+            CenterLogInPanel();
+
         }
 
         private void ValidateUser()
         {
+            if (userManager.CheckLogIn(tbEmail.Text, tbPassword.Text, out int id))
+            {
+                closeForm(userManager.GetEmployeeById(id)!);
+                userManager.SetSetting("loggedAs", id);
+            }
+            else
+            {
+                MessageBox.Show("Wrong");
+            }
         }
 
         private void CenterLogInPanel()
