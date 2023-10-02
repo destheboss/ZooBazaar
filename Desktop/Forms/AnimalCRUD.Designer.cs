@@ -536,7 +536,6 @@
             this.Name = "Animal_CRUD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Animal_CRUD";
-            this.Load += new System.EventHandler(this.Animal_CRUD_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.viewAllAnimals_dgv)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
