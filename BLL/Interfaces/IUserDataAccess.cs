@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace BLL.Interfaces
 {
     public interface IUserDataAccess
     {
-        bool Create(User user);
+        bool CreateEmployee(Employee employee);
 
-
+        bool CreateCustomer(Customer customer);
 
 
 

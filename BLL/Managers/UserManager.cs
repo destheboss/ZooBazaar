@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,14 @@ namespace BLL.Managers
         {
             this.data = data;
         }
-        public bool Create(User user)
+        public bool CreateEmployee(Employee employee)
         {
-            return data.Create(user);
+            return data.CreateEmployee(employee);
+        }
+
+        public bool CreateCustomer(Customer customer)
+        {
+            return data.CreateCustomer(customer);
         }
 
 
