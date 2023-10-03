@@ -10,10 +10,10 @@ namespace BLL.Interfaces
     public interface IUserDataAccess
     {
         bool CreateEmployee(Employee employee);
-
         bool CreateCustomer(Customer customer);
-
-
+        bool CheckLogIn(string username, string password, out int id);
+        Employee? GetEmployeeById(int id);
+        
 
         //DESKTOP AUTHENTICATION
         void SetSetting(string key, dynamic? value);

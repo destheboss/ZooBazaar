@@ -25,6 +25,14 @@ namespace BLL.Managers
         {
             return data.CreateCustomer(customer);
         }
+        public bool CheckLogIn(string username, string password, out int id)
+        {
+            return data.CheckLogIn(username, password, out id);
+        }
+        public Employee? GetEmployeeById(int id)
+        {
+            return data.GetEmployeeById(id);
+        }
 
 
 
