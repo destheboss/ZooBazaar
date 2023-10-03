@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
+﻿using BLL.Managers;
+using BLL.Models;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,21 +8,18 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using BLL.Managers;
-using DAL;
 
-namespace ZooBazaar.Forms
+namespace Desktop.Forms
 {
     public partial class LogIn : Form
     {
-        private Action<User> closeForm;
+        private Action<Employee> closeForm;
         private UserManager userManager;
 
-        public LogIn(Action<User> closeForm)
+        public LogIn(Action<Employee> closeForm)
         {
             userManager = new UserManager(new UserDataAccess());
             this.closeForm = closeForm;
@@ -48,11 +47,6 @@ namespace ZooBazaar.Forms
             loginPanel.Top = (this.ClientSize.Height - loginPanel.Height) / 2;
 
         }
-
-        private void btnLogIn_Click(object sender, EventArgs e)
-        {
-            ValidateUser();
-        }
         private static Regex email_validation()
         {
             string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
@@ -61,5 +55,11 @@ namespace ZooBazaar.Forms
 
             return new Regex(pattern, RegexOptions.IgnoreCase);
         }
+
+        private void btnLogIn_Click_1(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
     }
+
 }

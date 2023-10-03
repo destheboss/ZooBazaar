@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using crypto;
 using MySql.Data.MySqlClient;
 using BLL.Models;
+using ClassLibrary.Extentions;
 
 namespace DAL
 {
     public class UserDataAccess : IUserDataAccess
     {
         private static readonly string rootDirectory = Directory.GetParent(path: Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
-        public static readonly string settingsFile = Path.Combine(rootDirectory, "Databases", "settings.json");
+        public static readonly string settingsFile = Path.Combine(rootDirectory, "Forms", "settings.json");
 
         public bool CreateEmployee(Employee employee)
         {
@@ -91,8 +92,98 @@ namespace DAL
             }
         }
 
+        public bool CheckLogIn(string email, string password, out int id)
+        {
 
+            using (MySqlConnection Conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    Conn.Open();
+                    string sql = "select * FROM employee WHERE email = @email AND password = @password";
+                    var cmd = new MySqlCommand(sql, Conn);
 
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        return true;
+                    }
+                    else
+                    {
+                        id = 0;
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    id = 0;
+                    return false;
+                }
+                finally
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+        public Employee? GetEmployeeById(int id)
+        {
+            using (MySqlConnection Conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    Conn.Open();
+                    string sql = "select * FROM employee WHERE id = @Id";
+                    var cmd = new MySqlCommand(sql, Conn);
+
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    var reader = cmd.ExecuteReader();
+
+                    var columns = new List<string>();
+
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        columns.Add(reader.GetName(i));
+                    }
+
+                    if (reader.Read())
+                    {
+                        Employee employee = new Employee(
+                            reader.GetInt32("id"),
+                            reader.GetString("email"),
+                            reader.GetString("password"),
+                            reader.GetString("firstName"),
+                            reader.GetString("lastName"),
+                            reader.GetDateTime("birthDate"),
+                            reader.GetInt32("phoneNumber"),
+                            reader.GetInt32("bsn"),
+                            reader.GetInt32("wage"),
+                            Extentions.ParseEnum<Role>(reader.GetString(9)),
+                            reader.GetString("city"),
+                            reader.GetString("street"),
+                            reader.GetString("zipCode"),
+                            reader.GetString("houseNumber"));
+                        return employee;
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
 
 
 

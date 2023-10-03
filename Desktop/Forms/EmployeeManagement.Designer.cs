@@ -1,6 +1,6 @@
-﻿namespace ZooBazaar.Forms
+﻿namespace Desktop.Forms
 {
-    partial class Employees
+    partial class EmployeeManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -99,8 +99,8 @@
             tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1672, 911);
-            tabControl1.TabIndex = 1;
+            tabControl1.Size = new Size(1277, 638);
+            tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
@@ -112,7 +112,7 @@
             tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(1664, 878);
+            tabPage1.Size = new Size(1269, 605);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Information";
             // 
@@ -143,7 +143,6 @@
             cbRoleSearch.Name = "cbRoleSearch";
             cbRoleSearch.Size = new Size(255, 28);
             cbRoleSearch.TabIndex = 16;
-            cbRoleSearch.SelectedIndexChanged += cbRoleSearch_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -161,7 +160,6 @@
             tbSearchName.Name = "tbSearchName";
             tbSearchName.Size = new Size(255, 27);
             tbSearchName.TabIndex = 0;
-            tbSearchName.TextChanged += tbSearchName_TextChanged;
             // 
             // panel3
             // 
@@ -195,7 +193,6 @@
             btnDeleteEmployee.TabIndex = 15;
             btnDeleteEmployee.Text = "Delete";
             btnDeleteEmployee.UseVisualStyleBackColor = true;
-            btnDeleteEmployee.Click += btnDeleteEmployee_Click_1;
             // 
             // label7
             // 
@@ -226,7 +223,6 @@
             buttonEdit.TabIndex = 12;
             buttonEdit.Text = "Edit Info";
             buttonEdit.UseVisualStyleBackColor = true;
-            buttonEdit.Click += buttonEdit_Click_1;
             // 
             // label2
             // 
@@ -249,7 +245,6 @@
             btnSaveInfo.TabIndex = 3;
             btnSaveInfo.Text = "Save Info";
             btnSaveInfo.UseVisualStyleBackColor = true;
-            btnSaveInfo.Click += btnSaveInfo_Click;
             // 
             // tbWageEdit
             // 
@@ -326,14 +321,14 @@
             tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(1664, 878);
+            tabPage2.Size = new Size(1269, 605);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Create Employees";
             // 
             // lbInfo
             // 
             lbInfo.AutoSize = true;
-            lbInfo.Location = new Point(688, 586);
+            lbInfo.Location = new Point(691, 588);
             lbInfo.Name = "lbInfo";
             lbInfo.Size = new Size(276, 20);
             lbInfo.TabIndex = 31;
@@ -343,7 +338,7 @@
             // 
             lbAccountCreate.AutoSize = true;
             lbAccountCreate.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            lbAccountCreate.Location = new Point(499, 686);
+            lbAccountCreate.Location = new Point(502, 688);
             lbAccountCreate.Name = "lbAccountCreate";
             lbAccountCreate.Size = new Size(659, 54);
             lbAccountCreate.TabIndex = 30;
@@ -439,7 +434,6 @@
             btnAddContract.TabIndex = 22;
             btnAddContract.Text = "Add Contract";
             btnAddContract.UseVisualStyleBackColor = true;
-            btnAddContract.Click += btnAddContract_Click;
             // 
             // nudHouseNumber
             // 
@@ -599,19 +593,15 @@
             btnCreateEmployee.TabIndex = 12;
             btnCreateEmployee.Text = "Create";
             btnCreateEmployee.UseVisualStyleBackColor = false;
-            btnCreateEmployee.Click += btnCreateEmployee_Click_1;
             // 
-            // Employees
+            // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(252, 234, 222);
-            ClientSize = new Size(1672, 911);
+            ClientSize = new Size(1277, 638);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "Employees";
-            Text = "Employees";
-            Load += Employees_Load;
+            Name = "EmployeeManagement";
+            Text = "EmployeeManagement";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
@@ -636,17 +626,38 @@
 
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private Button btnSaveInfo;
-        private TabPage tabPage2;
-        private TextBox tbWageEdit;
-        private TextBox tbPhoneNumberEdit;
-        private TextBox tbLastNameEdit;
-        private TextBox tbFirstNameEdit;
-        private Label label5;
-        private Label label4;
-        private Label label3;
+        private DataGridView dgvEmployee;
+        private Panel panel4;
+        private ComboBox cbRoleSearch;
+        private Label label8;
+        private TextBox tbSearchName;
+        private Panel panel3;
+        private Button btnDeleteEmployee;
+        private Label label7;
+        private TextBox tbEmailEdit;
+        private Button buttonEdit;
         private Label label2;
+        private Button btnSaveInfo;
+        private TextBox tbWageEdit;
+        private Label label5;
+        private TextBox tbFirstNameEdit;
+        private Label label4;
+        private TextBox tbPhoneNumberEdit;
+        private Label label3;
+        private TextBox tbLastNameEdit;
+        private TabPage tabPage2;
+        private Label lbInfo;
+        private Label lbAccountCreate;
         private Panel panel1;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private NumericUpDown nudPhoneNumber;
+        private Button btnAddContract;
+        private NumericUpDown nudHouseNumber;
+        private NumericUpDown nudWage;
+        private NumericUpDown nudBSN;
         private TextBox tbFirstName;
         private TextBox tbPassword;
         private TextBox tbZipCode;
@@ -660,26 +671,5 @@
         private Panel panel2;
         private Label label6;
         private Button btnCreateEmployee;
-        private Panel panel3;
-        private Panel panel4;
-        private DataGridView dgvEmployee;
-        private TextBox tbSearchName;
-        private Label label8;
-        private Label label7;
-        private TextBox tbEmailEdit;
-        private Button buttonEdit;
-        private ComboBox cbRoleSearch;
-        private Button btnDeleteEmployee;
-        private NumericUpDown nudBSN;
-        private NumericUpDown nudWage;
-        private NumericUpDown nudHouseNumber;
-        private Button btnAddContract;
-        private Label label12;
-        private Label label11;
-        private Label label10;
-        private Label label9;
-        private NumericUpDown nudPhoneNumber;
-        private Label lbAccountCreate;
-        private Label lbInfo;
     }
 }

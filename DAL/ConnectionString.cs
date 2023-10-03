@@ -11,7 +11,7 @@ namespace DAL
     {
         public static MySqlConnection Connection()
         {
-            return new MySqlConnection("server=localhost;database=YOUR DATABASE;uid=root;pwd=YOUR OWN PASSWORD");
+           return new MySqlConnection("server=localhost;database=zoobazar;uid=root;pwd=Cesekar4e");
         }
     }
 }
