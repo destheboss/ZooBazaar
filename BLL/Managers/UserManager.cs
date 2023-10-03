@@ -15,7 +15,10 @@ namespace BLL.Managers
         {
             this.data = data;
         }
-
+        public bool Create(User user)
+        {
+            return data.Create(user);
+        }
 
 
 

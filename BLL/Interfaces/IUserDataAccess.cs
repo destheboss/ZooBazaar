@@ -8,7 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IUserDataAccess
     {
-
+        bool Create(User user);
 
 
 
