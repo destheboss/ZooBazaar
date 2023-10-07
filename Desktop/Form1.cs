@@ -88,7 +88,7 @@ namespace Desktop
 
         private void btnAnimals_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.AnimalManagement());
+            OpenChildForm(new Forms.AnimalCRUD());
         }
     }
 }

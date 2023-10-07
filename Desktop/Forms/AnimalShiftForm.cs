@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Desktop.Forms
 {
-    public partial class AnimalManagement : Form
+    public partial class AnimalShiftForm : Form
     {
-        public AnimalManagement()
+        public AnimalShiftForm()
         {
             InitializeComponent();
         }
