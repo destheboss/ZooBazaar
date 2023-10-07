@@ -1,51 +1,63 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WEB</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WEB.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - ZooBazaarWebsite</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/ZooBazaarWebsite.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">WEB</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - WEB - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark site-header border-bottom sticky-top">
+			<div class="container">
+				<a class="nav-link text-light align-content-center" asp-area="" asp-page="/Index">Zoo</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar" aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="n_bar">
+					<ul class="navbar-nav nav-fill w-100">
+						<li class="nav-item mt-1"><a class="nav-link text-light" asp-area="" asp-page="/Ticket">Buy Tickets</a></li>
+						@*@if (User.Identity.IsAuthenticated)
+						{
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Schedule">My Schedule</a></li>
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/AnimalShift">Animal Shift</a></li>
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/LeaveRequestHome">Leave Request</a></li>
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Availability">Availability</a></li>
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Logout">Log out</a></li>
+						}
+						else
+						{
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/login">Log in</a></li>
+						}*@
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+
+	<footer class="border-top footer text-muted">
+		<div class="container mb-3 mt-3">
+			&copy; 2023 - The ZooLanders - ZooBazaar - <a asp-area="" asp-page="/Privacy">About us</a>
+		</div>
+	</footer>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

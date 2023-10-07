@@ -1,18 +1,63 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    scrollbar-gutter: stable;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #FCEADE;
+}
+
+
+.navbar {
+    background-color: #01200F;
+}
+
+.footer {
+    background-color: #01200F;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.card-header {
+    background-color: #004600;
+}
+
+.btn-primary {
+    background-color: #004600;
+}
+
+.btn-outline-primary {
+    color: #004600;
+    border-color: #004600;
+}
+
+.marketinghead {
+    padding-top: 15px;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.greentext {
+    color: #357a38;
+}
+
+.ticket {
+    padding-left: 400px;
+    padding-right: 400px;
 }
