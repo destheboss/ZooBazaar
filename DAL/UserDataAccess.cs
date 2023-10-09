@@ -25,8 +25,8 @@ namespace DAL
                 try
                 {
                     Conn.Open();
-                    string sql = "INSERT INTO employee (id, email, password, firstName, lastName, birthDate, phoneNumber, bsn, wage, role, city, street, zipCode, houseNumber) " +
-                        "values (@id, @email, @password, @firstName, @lastName, @birthDate, @phoneNumber, @bsn, @wage, @role, @city, @street, @zipCode, @houseNumber)";
+                    string sql = "INSERT INTO employee (id, email, password, firstName, lastName, phoneNumber, bsn, wage, role, city, street, zipCode, houseNumber) " +
+                        "values (@id, @email, @password, @firstName, @lastName, @phoneNumber, @bsn, @wage, @role, @city, @street, @zipCode, @houseNumber)";
 
                     var cmd = new MySqlCommand(sql, Conn);
 
@@ -35,7 +35,6 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@password", employee.Password);
                     cmd.Parameters.AddWithValue("@firstName", employee.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", employee.LastName);
-                    cmd.Parameters.AddWithValue("@birthdate", employee.BirthDate);
                     cmd.Parameters.AddWithValue("@phoneNumber", employee.PhoneNumber);
                     cmd.Parameters.AddWithValue("@bsn", employee.Bsn);
                     cmd.Parameters.AddWithValue("@wage", employee.Wage);
@@ -158,11 +157,10 @@ namespace DAL
                             reader.GetString("password"),
                             reader.GetString("firstName"),
                             reader.GetString("lastName"),
-                            reader.GetDateTime("birthDate"),
                             reader.GetInt32("phoneNumber"),
                             reader.GetInt32("bsn"),
                             reader.GetInt32("wage"),
-                            Extentions.ParseEnum<Role>(reader.GetString(9)),
+                            Extentions.ParseEnum<Role>(reader.GetString("role")),
                             reader.GetString("city"),
                             reader.GetString("street"),
                             reader.GetString("zipCode"),
@@ -184,9 +182,106 @@ namespace DAL
                 }
             }
         }
+        public List<Employee> GetAllEmployees()
+        {
+            using (MySqlConnection Conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    Conn.Open();
 
+                    string sql = "select * FROM employee";
+                    var cmd = new MySqlCommand(sql, Conn);
+                    var reader = cmd.ExecuteReader();
 
+                    List<Employee> employees = new List<Employee>();
+                    while (reader.Read())
+                    {
+                        Employee employee = new Employee(
+                             reader.GetInt32("id"),
+                            reader.GetString("email"),
+                            reader.GetString("password"),
+                            reader.GetString("firstName"),
+                            reader.GetString("lastName"),
+                            reader.GetInt32("phoneNumber"),
+                            reader.GetInt32("bsn"),
+                            reader.GetInt32("wage"),
+                            Extentions.ParseEnum<Role>(reader.GetString("role")),
+                            reader.GetString("city"),
+                            reader.GetString("street"),
+                            reader.GetString("zipCode"),
+                            reader.GetString("houseNumber"));
+                        employees.Add(employee);
+                    }
+                    return employees;
+                }
+                catch (InvalidOperationException)
+                {
+                    return new List<Employee>();
+                }
+                finally
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+        public bool UpdateEmployee(Employee employee)
+        {
+            using (MySqlConnection Conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    string sql = "UPDATE employee SET firstName = @firstName, lastName = @lastName, phoneNumber = @phoneNumber, email = @email, wage = @wage WHERE id = @userId";
+                    var cmd = new MySqlCommand(sql, Conn);
+                    Conn.Open();
 
+                    cmd.Parameters.AddWithValue("@userId", employee.Id);
+                    cmd.Parameters.AddWithValue("@firstName", employee.FirstName);
+                    cmd.Parameters.AddWithValue("@lastName", employee.LastName);
+                    cmd.Parameters.AddWithValue("@phoneNumber", employee.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@email", employee.Email);
+                    cmd.Parameters.AddWithValue("@wage", employee.Wage);
+                    int result = cmd.ExecuteNonQuery();
+                    return result == 1;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+        public bool DeleteEmployee(int id)
+        {
+            //bool success = false;
+            using (MySqlConnection conn = ConnectionString.Connection())
+            {
+                conn.Open();
+                string sqlEmp = "DELETE FROM employee WHERE Id = @Id";
+                MySqlCommand cmd = new MySqlCommand(sqlEmp, conn);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+
+                return true;
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
 
 
 

@@ -13,8 +13,9 @@ namespace BLL.Interfaces
         bool CreateCustomer(Customer customer);
         bool CheckLogIn(string username, string password, out int id);
         Employee? GetEmployeeById(int id);
-        
-
+        List<Employee> GetAllEmployees();
+        bool UpdateEmployee(Employee employee);
+        bool DeleteEmployee(int id);
         //DESKTOP AUTHENTICATION
         void SetSetting(string key, dynamic? value);
         dynamic? GetSetting(string key);
