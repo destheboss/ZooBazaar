@@ -18,7 +18,7 @@ namespace DAL
             {
                 using (MySqlConnection con = ConnectionString.Connection())
                 {
-                    string sqlQuery = "SELECT a.Id, a.Name, a.Weight, a.DateOfBirth, a.Status, at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName " +
+                    string sqlQuery = "SELECT a.Id, a.Name, a.Weight, a.DateOfBirth, at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName " +
                         "FROM Animal as a " +
                         "LEFT JOIN Animaltype as at ON a.AnimalTypeId = at.Id " +
                         "LEFT JOIN Location as al ON a.LocationId = al.Id";
@@ -208,7 +208,7 @@ namespace DAL
             {
                 using (MySqlConnection con = ConnectionString.Connection())
                 {
-                    string sqlQuery = "UPDATE Animal SET Name = @Name, DateOfBirth = @DateOfBirth, Weight = @Weight, animalTypeId = @TypeId, LocationId = @LocationId, Status = @AnimalStatus WHERE Id = @Id";
+                    string sqlQuery = "UPDATE Animal SET Name = @Name, DateOfBirth = @DateOfBirth, Weight = @Weight, animalTypeId = @TypeId, LocationId = @LocationId WHERE Id = @Id";
                     MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
                     cmd.Parameters.AddWithValue("@Id", animal.Id);
                     cmd.Parameters.AddWithValue("@Name", animal.AnimalName);

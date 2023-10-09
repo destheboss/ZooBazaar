@@ -135,8 +135,6 @@ namespace DAL
         {
             using (MySqlConnection Conn = ConnectionString.Connection())
             {
-                try
-                {
                     Conn.Open();
                     string sql = "select * FROM employee WHERE id = @Id";
                     var cmd = new MySqlCommand(sql, Conn);
@@ -172,6 +170,8 @@ namespace DAL
                         return employee;
                     }
                     return null;
+                try
+                {
                 }
                 catch (Exception ex)
                 {

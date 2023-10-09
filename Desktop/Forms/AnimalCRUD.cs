@@ -37,12 +37,13 @@ namespace Desktop.Forms
             AnimalList = animalManager.GetAllAnimals();
         }
 
-        private void Animal_CRUD_Load_1(object sender, EventArgs e)
+        private void AnimalCRUD_Load(object sender, EventArgs e)
         {
-            DisplayAliveAnimal();
+            DisplayAllAnimals();
             PopulateAnimalTypeComboBox();
             PopulateAnimalLocationComboBox();
             //PopulateAnimalStatusComboBox();
+
         }
 
         private void ResetAnimalField()
@@ -139,91 +140,22 @@ namespace Desktop.Forms
         //    }
         //}
 
-        private void addAnimal_btn_Click_1(object sender, EventArgs e)
+        private void animalType_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string animalName = name_tb.Text;
-                DateTime dateOfBirth = DtpDob.Value;
-                decimal animalWeight = Convert.ToDecimal(weight_tb.Text);
-                AnimalType animalType = (AnimalType)animalType_cb.SelectedItem;
-                AnimalLocation animalLocation = (AnimalLocation)animalLocation_cb.SelectedItem;
-                //AnimalStatus animalStatus = (AnimalStatus)animalStatus_cb.SelectedItem;
-
-                Animal animal = new Animal(0, animalName, dateOfBirth, animalWeight, animalType, animalLocation/*, animalStatus*/);
-
-                bool isAdded = animalManager.AddAnimal(animal);
-
-                if (isAdded)
-                {
-                    List<Animal> allAnimals = animalManager.GetAllAnimals();
-                }
-                else
-                {
-                    MessageBox.Show("Error occurred while adding animal.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            ResetAnimalField();
-            DisplayAliveAnimal();
+            PopulateAnimalTypeComboBox();
         }
 
-        private void editAnimal_btn_Click(object sender, EventArgs e)
+        private void animalLocation_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (viewAllAnimals_dgv.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = viewAllAnimals_dgv.SelectedRows[0];
-
-                name_tb.Text = selectedRow.Cells["Name"].Value.ToString();
-                animalType_cb.SelectedIndex = animalType_cb.FindStringExact(selectedRow.Cells["Type"].Value.ToString());
-                weight_tb.Text = selectedRow.Cells["Weight"].Value.ToString();
-                animalLocation_cb.SelectedIndex = animalLocation_cb.FindStringExact(selectedRow.Cells["Location"].Value.ToString());
-                DtpDob.Value = Convert.ToDateTime(selectedRow.Cells["DateOfBirth"].Value);
-                animalStatus_cb.SelectedIndex = animalStatus_cb.FindStringExact(selectedRow.Cells["AnimalStatus"].Value.ToString());
-
-                addAnimal_btn.Hide();
-                removeAnimal_btn.Hide();
-                saveAnimal_btn.Show();
-            }
-            else
-            {
-                MessageBox.Show("Please select an animal to edit.");
-            }
+            PopulateAnimalLocationComboBox();
         }
 
-        private void removeAnimal_btn_Click(object sender, EventArgs e)
+        private void displayAllAnimals_btn_Click(object sender, EventArgs e)
         {
-            if (viewAllAnimals_dgv.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = viewAllAnimals_dgv.SelectedRows[0];
-                int animalId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
-                string animalName = Convert.ToString(selectedRow.Cells["Name"].Value);
-                AnimalManager animalManager = new AnimalManager(new AnimalDataAccess());
-
-                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to remove animal with Name: {animalName}?", "Confirm Deletion",
-                    MessageBoxButtons.YesNo);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    bool result = animalManager.RemoveAnimal(new Animal(animalId));
-
-                    if (result)
-                    {
-                        MessageBox.Show("Animal removed successfully.");
-                        DisplayAliveAnimal();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to remove animal.");
-                    }
-                }
-            }
+            DisplayAllAnimals();
         }
 
-        private void saveAnimal_btn_Click(object sender, EventArgs e)
+        private void saveAnimal_btn_Click_1(object sender, EventArgs e)
         {
             if (viewAllAnimals_dgv.SelectedRows.Count == 0)
             {
@@ -265,10 +197,95 @@ namespace Desktop.Forms
             }
         }
 
-        private void displayAllAnimals_btn_Click_2(object sender, EventArgs e)
+        private void removeAnimal_btn_Click_1(object sender, EventArgs e)
         {
-            DisplayAllAnimals();
+            if (viewAllAnimals_dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = viewAllAnimals_dgv.SelectedRows[0];
+                int animalId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+                string animalName = Convert.ToString(selectedRow.Cells["Name"].Value);
+                AnimalManager animalManager = new AnimalManager(new AnimalDataAccess());
+
+                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to remove animal with Name: {animalName}?", "Confirm Deletion",
+                    MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    bool result = animalManager.RemoveAnimal(new Animal(animalId));
+
+                    if (result)
+                    {
+                        MessageBox.Show("Animal removed successfully.");
+                        DisplayAliveAnimal();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to remove animal.");
+                    }
+                }
+            }
         }
+
+        private void editAnimal_btn_Click_1(object sender, EventArgs e)
+        {
+            if (viewAllAnimals_dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = viewAllAnimals_dgv.SelectedRows[0];
+
+                name_tb.Text = selectedRow.Cells["Name"].Value.ToString();
+                animalType_cb.SelectedIndex = animalType_cb.FindStringExact(selectedRow.Cells["Type"].Value.ToString());
+                weight_tb.Text = selectedRow.Cells["Weight"].Value.ToString();
+                animalLocation_cb.SelectedIndex = animalLocation_cb.FindStringExact(selectedRow.Cells["Location"].Value.ToString());
+                DtpDob.Value = Convert.ToDateTime(selectedRow.Cells["DateOfBirth"].Value);
+               //animalStatus_cb.SelectedIndex = animalStatus_cb.FindStringExact(selectedRow.Cells["AnimalStatus"].Value.ToString());
+
+                addAnimal_btn.Hide();
+                removeAnimal_btn.Hide();
+                saveAnimal_btn.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select an animal to edit.");
+            }
+        }
+
+        private void addAnimal_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string animalName = name_tb.Text;
+                DateTime dateOfBirth = DtpDob.Value;
+                decimal animalWeight = Convert.ToDecimal(weight_tb.Text);
+                AnimalType animalType = (AnimalType)animalType_cb.SelectedItem;
+                AnimalLocation animalLocation = (AnimalLocation)animalLocation_cb.SelectedItem;
+                //AnimalStatus animalStatus = (AnimalStatus)animalStatus_cb.SelectedItem;
+
+                Animal animal = new Animal(0, animalName, dateOfBirth, animalWeight, animalType, animalLocation/*, animalStatus*/);
+
+                bool isAdded = animalManager.AddAnimal(animal);
+
+                if (isAdded)
+                {
+                    List<Animal> allAnimals = animalManager.GetAllAnimals();
+                }
+                else
+                {
+                    MessageBox.Show("Error occurred while adding animal.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            ResetAnimalField();
+            DisplayAliveAnimal();
+        }
+
+        private void viewAllAnimals_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
 
         //private void BtnAnimalschedule_Click(object sender, EventArgs e)
         //{

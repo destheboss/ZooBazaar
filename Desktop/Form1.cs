@@ -81,12 +81,17 @@ namespace Desktop
 
         }
 
-        private void btnEmployees_Click(object sender, EventArgs e)
-        { 
+        private void btnLocationAndType_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.LocationAndAnimalTyoe());
+        }
+
+        private void btnEmployees_Click_1(object sender, EventArgs e)
+        {
             OpenChildForm(new Forms.EmployeeManagement(employee));
         }
 
-        private void btnAnimals_Click(object sender, EventArgs e)
+        private void btnAnimals_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.AnimalCRUD());
         }
