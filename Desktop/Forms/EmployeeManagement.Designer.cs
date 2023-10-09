@@ -143,6 +143,7 @@
             cbRoleSearch.Name = "cbRoleSearch";
             cbRoleSearch.Size = new Size(255, 28);
             cbRoleSearch.TabIndex = 16;
+            cbRoleSearch.SelectedIndexChanged += cbRoleSearch_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -160,6 +161,7 @@
             tbSearchName.Name = "tbSearchName";
             tbSearchName.Size = new Size(255, 27);
             tbSearchName.TabIndex = 0;
+            tbSearchName.TextChanged += tbSearchName_TextChanged;
             // 
             // panel3
             // 
@@ -193,6 +195,7 @@
             btnDeleteEmployee.TabIndex = 15;
             btnDeleteEmployee.Text = "Delete";
             btnDeleteEmployee.UseVisualStyleBackColor = true;
+            btnDeleteEmployee.Click += btnDeleteEmployee_Click;
             // 
             // label7
             // 
@@ -223,6 +226,7 @@
             buttonEdit.TabIndex = 12;
             buttonEdit.Text = "Edit Info";
             buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // label2
             // 
@@ -245,6 +249,7 @@
             btnSaveInfo.TabIndex = 3;
             btnSaveInfo.Text = "Save Info";
             btnSaveInfo.UseVisualStyleBackColor = true;
+            btnSaveInfo.Click += btnSaveInfo_Click;
             // 
             // tbWageEdit
             // 
@@ -593,6 +598,7 @@
             btnCreateEmployee.TabIndex = 12;
             btnCreateEmployee.Text = "Create";
             btnCreateEmployee.UseVisualStyleBackColor = false;
+            btnCreateEmployee.Click += btnCreateEmployee_Click;
             // 
             // EmployeeManagement
             // 

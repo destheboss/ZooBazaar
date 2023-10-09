@@ -34,5 +34,22 @@ namespace BLL.Models
             this.BirthDate = birthDate;
             this.PhoneNumber = phoneNumber;
         }
+        public Person(int id, string email, string password, string firstName, string lastName, int phoneNumber)
+        {
+            this.Id = id;
+            this.Email = email;
+            this.Password = password;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
+        }
+        public Person(int id, string email, string firstName, string lastName, int phoneNumber)
+        {
+            this.Id = id;
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
+        }
     }
 }

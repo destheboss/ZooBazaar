@@ -33,7 +33,15 @@ namespace BLL.Managers
         {
             return data.GetEmployeeById(id);
         }
-
+        public List<Employee> GetAllEmployees() {
+            return data.GetAllEmployees();
+        }
+        public bool UpdateEmployee(Employee employee) { 
+            return data.UpdateEmployee(employee);
+        }
+        public bool DeleteEmployee(int id) { 
+            return data.DeleteEmployee(id); 
+        }
 
 
 
