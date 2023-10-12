@@ -48,7 +48,7 @@ namespace Desktop.Forms
             dgvEmployee.Columns.Add("Email", "Email");
             dgvEmployee.Columns.Add("Wage", "Wage");
             dgvEmployee.Columns.Add("Bsn", "Bsn");
-            dgvEmployee.Columns.Add("BankAccount", "Bank Account");
+            //dgvEmployee.Columns.Add("BankAccount", "Bank Account");
             dgvEmployee.Columns.Add("Role", "Role");
 
             foreach (Employee emp in employees)
@@ -184,7 +184,7 @@ namespace Desktop.Forms
                 if (string.IsNullOrEmpty(tbFirstName.Text) || string.IsNullOrEmpty(tbLastName.Text) ||
                     string.IsNullOrEmpty(nudPhoneNumber.Text) || string.IsNullOrEmpty(tbEmail.Text) ||
                     string.IsNullOrEmpty(tbPassword.Text) || string.IsNullOrEmpty(nudBSN.Text) ||
-                    string.IsNullOrEmpty(tbBankAccount.Text) || string.IsNullOrEmpty(nudWage.Text) ||
+                    string.IsNullOrEmpty(nudWage.Text) ||
                     string.IsNullOrEmpty(tbCity.Text) || string.IsNullOrEmpty(tbStreet.Text) ||
                     string.IsNullOrEmpty(nudHouseNumber.Text) || string.IsNullOrEmpty(tbZipCode.Text))
                 {
@@ -220,7 +220,7 @@ namespace Desktop.Forms
                             tbZipCode.Clear();
                             tbCity.Clear();
                             tbStreet.Clear();
-                            tbBankAccount.Clear();
+                            //tbBankAccount.Clear();
                         }
                 }
             }
@@ -230,7 +230,14 @@ namespace Desktop.Forms
             }
         }
 
-        private void tbSearchName_TextChanged(object sender, EventArgs e)
+        
+
+        private void buttonEdit_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSearchName_TextChanged_1(object sender, EventArgs e)
         {
             dgvEmployee.Rows.Clear();
             List<Employee> FilteredEmployees = employees1.Where(X => (X.FirstName.Trim().ToLower() + " " + X.LastName.Trim().ToLower()).Contains(tbSearchName.Text.Trim().ToLower())).ToList();

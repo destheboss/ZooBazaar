@@ -56,9 +56,11 @@ namespace Desktop.Forms
             return new Regex(pattern, RegexOptions.IgnoreCase);
         }
 
-        private void btnLogIn_Click_1(object sender, EventArgs e)
+
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
             ValidateUser();
+
         }
     }
 

@@ -95,5 +95,11 @@ namespace Desktop
         {
             OpenChildForm(new Forms.AnimalCRUD());
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            userManager.SetSetting("loggedAs", null);
+            OpenLogIn();
+        }
     }
 }

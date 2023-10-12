@@ -29,112 +29,113 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
-            loginPanel = new Panel();
-            pictureBox1 = new PictureBox();
-            tbPassword = new TextBox();
-            tbEmail = new TextBox();
-            btnLogIn = new Button();
-            panel1 = new Panel();
-            label1 = new Label();
-            loginPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
-            SuspendLayout();
+            this.loginPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.btnLogIn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.loginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
             // 
             // loginPanel
             // 
-            loginPanel.Anchor = AnchorStyles.None;
-            loginPanel.AutoSize = true;
-            loginPanel.BackColor = Color.FromArgb(0, 70, 0);
-            loginPanel.Controls.Add(pictureBox1);
-            loginPanel.Controls.Add(tbPassword);
-            loginPanel.Controls.Add(tbEmail);
-            loginPanel.Controls.Add(btnLogIn);
-            loginPanel.Location = new Point(223, 103);
-            loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(354, 330);
-            loginPanel.TabIndex = 7;
+            this.loginPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.loginPanel.AutoSize = true;
+            this.loginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(0)))));
+            this.loginPanel.Controls.Add(this.pictureBox1);
+            this.loginPanel.Controls.Add(this.tbPassword);
+            this.loginPanel.Controls.Add(this.tbEmail);
+            this.loginPanel.Controls.Add(this.btnLogIn);
+            this.loginPanel.Location = new System.Drawing.Point(342, 169);
+            this.loginPanel.Name = "loginPanel";
+            this.loginPanel.Size = new System.Drawing.Size(354, 330);
+            this.loginPanel.TabIndex = 7;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(107, 17);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(145, 67);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(107, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(145, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // tbPassword
             // 
-            tbPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbPassword.Location = new Point(79, 136);
-            tbPassword.Name = "tbPassword";
-            tbPassword.PasswordChar = '*';
-            tbPassword.PlaceholderText = "Password";
-            tbPassword.Size = new Size(202, 29);
-            tbPassword.TabIndex = 2;
+            this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbPassword.Location = new System.Drawing.Point(79, 136);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.PlaceholderText = "Password";
+            this.tbPassword.Size = new System.Drawing.Size(202, 29);
+            this.tbPassword.TabIndex = 2;
             // 
             // tbEmail
             // 
-            tbEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbEmail.Location = new Point(79, 101);
-            tbEmail.Name = "tbEmail";
-            tbEmail.PlaceholderText = "Email";
-            tbEmail.Size = new Size(202, 29);
-            tbEmail.TabIndex = 1;
+            this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbEmail.Location = new System.Drawing.Point(79, 101);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.PlaceholderText = "Email";
+            this.tbEmail.Size = new System.Drawing.Size(202, 29);
+            this.tbEmail.TabIndex = 1;
             // 
             // btnLogIn
             // 
-            btnLogIn.BackColor = Color.Transparent;
-            btnLogIn.BackgroundImageLayout = ImageLayout.None;
-            btnLogIn.FlatStyle = FlatStyle.Flat;
-            btnLogIn.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogIn.ForeColor = Color.White;
-            btnLogIn.Location = new Point(122, 230);
-            btnLogIn.Name = "btnLogIn";
-            btnLogIn.Size = new Size(130, 42);
-            btnLogIn.TabIndex = 0;
-            btnLogIn.Text = "Log In";
-            btnLogIn.UseVisualStyleBackColor = false;
-            btnLogIn.Click += btnLogIn_Click_1;
+            this.btnLogIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogIn.ForeColor = System.Drawing.Color.White;
+            this.btnLogIn.Location = new System.Drawing.Point(122, 230);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(130, 42);
+            this.btnLogIn.TabIndex = 0;
+            this.btnLogIn.Text = "Log In";
+            this.btnLogIn.UseVisualStyleBackColor = false;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(1, 32, 15);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(223, 18);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(354, 79);
-            panel1.TabIndex = 8;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(32)))), ((int)(((byte)(15)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(342, 84);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(354, 79);
+            this.panel1.TabIndex = 8;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 39.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(89, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(176, 71);
-            label1.TabIndex = 0;
-            label1.Text = "Log In";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(89, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(176, 71);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Log In";
             // 
             // LogIn
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(loginPanel);
-            Controls.Add(panel1);
-            Name = "LogIn";
-            Text = "LogIn";
-            loginPanel.ResumeLayout(false);
-            loginPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1039, 582);
+            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.panel1);
+            this.Name = "LogIn";
+            this.Text = "LogIn";
+            this.loginPanel.ResumeLayout(false);
+            this.loginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

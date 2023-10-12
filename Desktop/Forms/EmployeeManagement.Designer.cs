@@ -28,604 +28,605 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            dgvEmployee = new DataGridView();
-            panel4 = new Panel();
-            cbRoleSearch = new ComboBox();
-            label8 = new Label();
-            tbSearchName = new TextBox();
-            panel3 = new Panel();
-            btnDeleteEmployee = new Button();
-            label7 = new Label();
-            tbEmailEdit = new TextBox();
-            buttonEdit = new Button();
-            label2 = new Label();
-            btnSaveInfo = new Button();
-            tbWageEdit = new TextBox();
-            label5 = new Label();
-            tbFirstNameEdit = new TextBox();
-            label4 = new Label();
-            tbPhoneNumberEdit = new TextBox();
-            label3 = new Label();
-            tbLastNameEdit = new TextBox();
-            tabPage2 = new TabPage();
-            lbInfo = new Label();
-            lbAccountCreate = new Label();
-            panel1 = new Panel();
-            label12 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            label9 = new Label();
-            nudPhoneNumber = new NumericUpDown();
-            btnAddContract = new Button();
-            nudHouseNumber = new NumericUpDown();
-            nudWage = new NumericUpDown();
-            nudBSN = new NumericUpDown();
-            tbFirstName = new TextBox();
-            tbPassword = new TextBox();
-            tbZipCode = new TextBox();
-            tbEmail = new TextBox();
-            tbStreet = new TextBox();
-            tbLastName = new TextBox();
-            tbCity = new TextBox();
-            label1 = new Label();
-            tbBankAccount = new TextBox();
-            cbRole = new ComboBox();
-            panel2 = new Panel();
-            label6 = new Label();
-            btnCreateEmployee = new Button();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
-            panel4.SuspendLayout();
-            panel3.SuspendLayout();
-            tabPage2.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudPhoneNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudHouseNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudWage).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudBSN).BeginInit();
-            panel2.SuspendLayout();
-            SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvEmployee = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cbRoleSearch = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbSearchName = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbEmailEdit = new System.Windows.Forms.TextBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSaveInfo = new System.Windows.Forms.Button();
+            this.tbWageEdit = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbFirstNameEdit = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbPhoneNumberEdit = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbLastNameEdit = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbInfo = new System.Windows.Forms.Label();
+            this.lbAccountCreate = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.nudPhoneNumber = new System.Windows.Forms.NumericUpDown();
+            this.btnAddContract = new System.Windows.Forms.Button();
+            this.nudHouseNumber = new System.Windows.Forms.NumericUpDown();
+            this.nudWage = new System.Windows.Forms.NumericUpDown();
+            this.nudBSN = new System.Windows.Forms.NumericUpDown();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbZipCode = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.tbStreet = new System.Windows.Forms.TextBox();
+            this.tbLastName = new System.Windows.Forms.TextBox();
+            this.tbCity = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbRole = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnCreateEmployee = new System.Windows.Forms.Button();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPhoneNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBSN)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1277, 638);
-            tabControl1.TabIndex = 2;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1277, 638);
+            this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.FromArgb(252, 234, 222);
-            tabPage1.Controls.Add(dgvEmployee);
-            tabPage1.Controls.Add(panel4);
-            tabPage1.Controls.Add(panel3);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Margin = new Padding(3, 2, 3, 2);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(1269, 605);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Information";
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(222)))));
+            this.tabPage1.Controls.Add(this.dgvEmployee);
+            this.tabPage1.Controls.Add(this.panel4);
+            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1269, 605);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Information";
             // 
             // dgvEmployee
             // 
-            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployee.Location = new Point(336, 16);
-            dgvEmployee.Name = "dgvEmployee";
-            dgvEmployee.RowTemplate.Height = 25;
-            dgvEmployee.Size = new Size(1307, 843);
-            dgvEmployee.TabIndex = 14;
+            this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployee.Location = new System.Drawing.Point(336, 16);
+            this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.RowTemplate.Height = 25;
+            this.dgvEmployee.Size = new System.Drawing.Size(1307, 843);
+            this.dgvEmployee.TabIndex = 14;
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(0, 70, 0);
-            panel4.Controls.Add(cbRoleSearch);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(tbSearchName);
-            panel4.Location = new Point(13, 16);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(288, 155);
-            panel4.TabIndex = 13;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(0)))));
+            this.panel4.Controls.Add(this.cbRoleSearch);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.tbSearchName);
+            this.panel4.Location = new System.Drawing.Point(13, 16);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(288, 155);
+            this.panel4.TabIndex = 13;
             // 
             // cbRoleSearch
             // 
-            cbRoleSearch.FormattingEnabled = true;
-            cbRoleSearch.Location = new Point(17, 103);
-            cbRoleSearch.Name = "cbRoleSearch";
-            cbRoleSearch.Size = new Size(255, 28);
-            cbRoleSearch.TabIndex = 16;
-            cbRoleSearch.SelectedIndexChanged += cbRoleSearch_SelectedIndexChanged;
+            this.cbRoleSearch.FormattingEnabled = true;
+            this.cbRoleSearch.Location = new System.Drawing.Point(17, 103);
+            this.cbRoleSearch.Name = "cbRoleSearch";
+            this.cbRoleSearch.Size = new System.Drawing.Size(255, 28);
+            this.cbRoleSearch.TabIndex = 16;
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(13, 37);
-            label8.Name = "label8";
-            label8.Size = new Size(117, 20);
-            label8.TabIndex = 15;
-            label8.Text = "Search by name:";
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(13, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(117, 20);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Search by name:";
             // 
             // tbSearchName
             // 
-            tbSearchName.Location = new Point(17, 60);
-            tbSearchName.Name = "tbSearchName";
-            tbSearchName.Size = new Size(255, 27);
-            tbSearchName.TabIndex = 0;
-            tbSearchName.TextChanged += tbSearchName_TextChanged;
+            this.tbSearchName.Location = new System.Drawing.Point(17, 60);
+            this.tbSearchName.Name = "tbSearchName";
+            this.tbSearchName.Size = new System.Drawing.Size(255, 27);
+            this.tbSearchName.TabIndex = 0;
+            this.tbSearchName.TextChanged += new System.EventHandler(this.tbSearchName_TextChanged_1);
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(0, 70, 0);
-            panel3.Controls.Add(btnDeleteEmployee);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(tbEmailEdit);
-            panel3.Controls.Add(buttonEdit);
-            panel3.Controls.Add(label2);
-            panel3.Controls.Add(btnSaveInfo);
-            panel3.Controls.Add(tbWageEdit);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(tbFirstNameEdit);
-            panel3.Controls.Add(label4);
-            panel3.Controls.Add(tbPhoneNumberEdit);
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(tbLastNameEdit);
-            panel3.Location = new Point(13, 177);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(288, 456);
-            panel3.TabIndex = 12;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.btnDeleteEmployee);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.tbEmailEdit);
+            this.panel3.Controls.Add(this.buttonEdit);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.btnSaveInfo);
+            this.panel3.Controls.Add(this.tbWageEdit);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.tbFirstNameEdit);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.tbPhoneNumberEdit);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.tbLastNameEdit);
+            this.panel3.Location = new System.Drawing.Point(13, 177);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(288, 456);
+            this.panel3.TabIndex = 12;
             // 
             // btnDeleteEmployee
             // 
-            btnDeleteEmployee.FlatStyle = FlatStyle.Flat;
-            btnDeleteEmployee.ForeColor = Color.White;
-            btnDeleteEmployee.Location = new Point(17, 398);
-            btnDeleteEmployee.Margin = new Padding(3, 2, 3, 2);
-            btnDeleteEmployee.Name = "btnDeleteEmployee";
-            btnDeleteEmployee.Size = new Size(255, 46);
-            btnDeleteEmployee.TabIndex = 15;
-            btnDeleteEmployee.Text = "Delete";
-            btnDeleteEmployee.UseVisualStyleBackColor = true;
-            btnDeleteEmployee.Click += btnDeleteEmployee_Click;
+            this.btnDeleteEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteEmployee.Location = new System.Drawing.Point(17, 398);
+            this.btnDeleteEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteEmployee.Name = "btnDeleteEmployee";
+            this.btnDeleteEmployee.Size = new System.Drawing.Size(255, 46);
+            this.btnDeleteEmployee.TabIndex = 15;
+            this.btnDeleteEmployee.Text = "Delete";
+            this.btnDeleteEmployee.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(17, 216);
-            label7.Name = "label7";
-            label7.Size = new Size(49, 20);
-            label7.TabIndex = 14;
-            label7.Text = "Email:";
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(17, 216);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Email:";
             // 
             // tbEmailEdit
             // 
-            tbEmailEdit.Location = new Point(17, 238);
-            tbEmailEdit.Margin = new Padding(3, 2, 3, 2);
-            tbEmailEdit.Name = "tbEmailEdit";
-            tbEmailEdit.Size = new Size(255, 27);
-            tbEmailEdit.TabIndex = 13;
+            this.tbEmailEdit.Location = new System.Drawing.Point(17, 238);
+            this.tbEmailEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbEmailEdit.Name = "tbEmailEdit";
+            this.tbEmailEdit.Size = new System.Drawing.Size(255, 27);
+            this.tbEmailEdit.TabIndex = 13;
             // 
             // buttonEdit
             // 
-            buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.ForeColor = Color.White;
-            buttonEdit.Location = new Point(17, 281);
-            buttonEdit.Margin = new Padding(3, 2, 3, 2);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(255, 44);
-            buttonEdit.TabIndex = 12;
-            buttonEdit.Text = "Edit Info";
-            buttonEdit.UseVisualStyleBackColor = true;
-            buttonEdit.Click += buttonEdit_Click;
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEdit.ForeColor = System.Drawing.Color.White;
+            this.buttonEdit.Location = new System.Drawing.Point(17, 281);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(255, 44);
+            this.buttonEdit.TabIndex = 12;
+            this.buttonEdit.Text = "Edit Info";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click_1);
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(17, 12);
-            label2.Name = "label2";
-            label2.Size = new Size(83, 20);
-            label2.TabIndex = 8;
-            label2.Text = "First Name:";
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(17, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "First Name:";
             // 
             // btnSaveInfo
             // 
-            btnSaveInfo.FlatStyle = FlatStyle.Flat;
-            btnSaveInfo.ForeColor = Color.White;
-            btnSaveInfo.Location = new Point(17, 339);
-            btnSaveInfo.Margin = new Padding(3, 2, 3, 2);
-            btnSaveInfo.Name = "btnSaveInfo";
-            btnSaveInfo.Size = new Size(255, 44);
-            btnSaveInfo.TabIndex = 3;
-            btnSaveInfo.Text = "Save Info";
-            btnSaveInfo.UseVisualStyleBackColor = true;
-            btnSaveInfo.Click += btnSaveInfo_Click;
+            this.btnSaveInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveInfo.ForeColor = System.Drawing.Color.White;
+            this.btnSaveInfo.Location = new System.Drawing.Point(17, 339);
+            this.btnSaveInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaveInfo.Name = "btnSaveInfo";
+            this.btnSaveInfo.Size = new System.Drawing.Size(255, 44);
+            this.btnSaveInfo.TabIndex = 3;
+            this.btnSaveInfo.Text = "Save Info";
+            this.btnSaveInfo.UseVisualStyleBackColor = true;
             // 
             // tbWageEdit
             // 
-            tbWageEdit.Location = new Point(17, 187);
-            tbWageEdit.Margin = new Padding(3, 2, 3, 2);
-            tbWageEdit.Name = "tbWageEdit";
-            tbWageEdit.Size = new Size(255, 27);
-            tbWageEdit.TabIndex = 7;
+            this.tbWageEdit.Location = new System.Drawing.Point(17, 187);
+            this.tbWageEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbWageEdit.Name = "tbWageEdit";
+            this.tbWageEdit.Size = new System.Drawing.Size(255, 27);
+            this.tbWageEdit.TabIndex = 7;
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(17, 165);
-            label5.Name = "label5";
-            label5.Size = new Size(50, 20);
-            label5.TabIndex = 11;
-            label5.Text = "Wage:";
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(17, 165);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Wage:";
             // 
             // tbFirstNameEdit
             // 
-            tbFirstNameEdit.Location = new Point(17, 34);
-            tbFirstNameEdit.Margin = new Padding(3, 2, 3, 2);
-            tbFirstNameEdit.Name = "tbFirstNameEdit";
-            tbFirstNameEdit.Size = new Size(255, 27);
-            tbFirstNameEdit.TabIndex = 4;
+            this.tbFirstNameEdit.Location = new System.Drawing.Point(17, 34);
+            this.tbFirstNameEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbFirstNameEdit.Name = "tbFirstNameEdit";
+            this.tbFirstNameEdit.Size = new System.Drawing.Size(255, 27);
+            this.tbFirstNameEdit.TabIndex = 4;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(17, 114);
-            label4.Name = "label4";
-            label4.Size = new Size(112, 20);
-            label4.TabIndex = 10;
-            label4.Text = "Phone number: ";
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(17, 114);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 20);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Phone number: ";
             // 
             // tbPhoneNumberEdit
             // 
-            tbPhoneNumberEdit.Location = new Point(17, 136);
-            tbPhoneNumberEdit.Margin = new Padding(3, 2, 3, 2);
-            tbPhoneNumberEdit.Name = "tbPhoneNumberEdit";
-            tbPhoneNumberEdit.Size = new Size(255, 27);
-            tbPhoneNumberEdit.TabIndex = 6;
+            this.tbPhoneNumberEdit.Location = new System.Drawing.Point(17, 136);
+            this.tbPhoneNumberEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPhoneNumberEdit.Name = "tbPhoneNumberEdit";
+            this.tbPhoneNumberEdit.Size = new System.Drawing.Size(255, 27);
+            this.tbPhoneNumberEdit.TabIndex = 6;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(17, 63);
-            label3.Name = "label3";
-            label3.Size = new Size(79, 20);
-            label3.TabIndex = 9;
-            label3.Text = "Last Name";
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(17, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Last Name";
             // 
             // tbLastNameEdit
             // 
-            tbLastNameEdit.Location = new Point(17, 85);
-            tbLastNameEdit.Margin = new Padding(3, 2, 3, 2);
-            tbLastNameEdit.Name = "tbLastNameEdit";
-            tbLastNameEdit.Size = new Size(255, 27);
-            tbLastNameEdit.TabIndex = 5;
+            this.tbLastNameEdit.Location = new System.Drawing.Point(17, 85);
+            this.tbLastNameEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbLastNameEdit.Name = "tbLastNameEdit";
+            this.tbLastNameEdit.Size = new System.Drawing.Size(255, 27);
+            this.tbLastNameEdit.TabIndex = 5;
             // 
             // tabPage2
             // 
-            tabPage2.BackColor = Color.FromArgb(252, 234, 222);
-            tabPage2.Controls.Add(lbInfo);
-            tabPage2.Controls.Add(lbAccountCreate);
-            tabPage2.Controls.Add(panel1);
-            tabPage2.Controls.Add(panel2);
-            tabPage2.Controls.Add(btnCreateEmployee);
-            tabPage2.ForeColor = Color.Black;
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Margin = new Padding(3, 2, 3, 2);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(1269, 605);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Create Employees";
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(222)))));
+            this.tabPage2.Controls.Add(this.lbInfo);
+            this.tabPage2.Controls.Add(this.lbAccountCreate);
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Controls.Add(this.panel2);
+            this.tabPage2.Controls.Add(this.btnCreateEmployee);
+            this.tabPage2.ForeColor = System.Drawing.Color.Black;
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1269, 605);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Create Employees";
             // 
             // lbInfo
             // 
-            lbInfo.AutoSize = true;
-            lbInfo.Location = new Point(691, 588);
-            lbInfo.Name = "lbInfo";
-            lbInfo.Size = new Size(276, 20);
-            lbInfo.TabIndex = 31;
-            lbInfo.Text = "First Create a Contract for the Employee.";
+            this.lbInfo.AutoSize = true;
+            this.lbInfo.Location = new System.Drawing.Point(691, 588);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(276, 20);
+            this.lbInfo.TabIndex = 31;
+            this.lbInfo.Text = "First Create a Contract for the Employee.";
             // 
             // lbAccountCreate
             // 
-            lbAccountCreate.AutoSize = true;
-            lbAccountCreate.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            lbAccountCreate.Location = new Point(502, 688);
-            lbAccountCreate.Name = "lbAccountCreate";
-            lbAccountCreate.Size = new Size(659, 54);
-            lbAccountCreate.TabIndex = 30;
-            lbAccountCreate.Text = "The Account Has Just Been Created!";
+            this.lbAccountCreate.AutoSize = true;
+            this.lbAccountCreate.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbAccountCreate.Location = new System.Drawing.Point(502, 688);
+            this.lbAccountCreate.Name = "lbAccountCreate";
+            this.lbAccountCreate.Size = new System.Drawing.Size(659, 54);
+            this.lbAccountCreate.TabIndex = 30;
+            this.lbAccountCreate.Text = "The Account Has Just Been Created!";
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(0, 70, 0);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(nudPhoneNumber);
-            panel1.Controls.Add(btnAddContract);
-            panel1.Controls.Add(nudHouseNumber);
-            panel1.Controls.Add(nudWage);
-            panel1.Controls.Add(nudBSN);
-            panel1.Controls.Add(tbFirstName);
-            panel1.Controls.Add(tbPassword);
-            panel1.Controls.Add(tbZipCode);
-            panel1.Controls.Add(tbEmail);
-            panel1.Controls.Add(tbStreet);
-            panel1.Controls.Add(tbLastName);
-            panel1.Controls.Add(tbCity);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(tbBankAccount);
-            panel1.Controls.Add(cbRole);
-            panel1.Location = new Point(399, 283);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(857, 240);
-            panel1.TabIndex = 29;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.nudPhoneNumber);
+            this.panel1.Controls.Add(this.btnAddContract);
+            this.panel1.Controls.Add(this.nudHouseNumber);
+            this.panel1.Controls.Add(this.nudWage);
+            this.panel1.Controls.Add(this.nudBSN);
+            this.panel1.Controls.Add(this.tbFirstName);
+            this.panel1.Controls.Add(this.tbPassword);
+            this.panel1.Controls.Add(this.tbZipCode);
+            this.panel1.Controls.Add(this.tbEmail);
+            this.panel1.Controls.Add(this.tbStreet);
+            this.panel1.Controls.Add(this.tbLastName);
+            this.panel1.Controls.Add(this.tbCity);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbRole);
+            this.panel1.Location = new System.Drawing.Point(399, 283);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(857, 240);
+            this.panel1.TabIndex = 29;
             // 
             // label12
             // 
-            label12.AutoSize = true;
-            label12.BackColor = Color.Transparent;
-            label12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(565, 83);
-            label12.Name = "label12";
-            label12.Size = new Size(94, 15);
-            label12.TabIndex = 27;
-            label12.Text = "House Number: ";
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(565, 83);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(94, 15);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "House Number: ";
             // 
             // label11
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = Color.White;
-            label11.Location = new Point(304, 83);
-            label11.Name = "label11";
-            label11.Size = new Size(43, 15);
-            label11.TabIndex = 26;
-            label11.Text = "Wage: ";
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(304, 83);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 15);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Wage: ";
             // 
             // label10
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(304, 2);
-            label10.Name = "label10";
-            label10.Size = new Size(32, 15);
-            label10.TabIndex = 25;
-            label10.Text = "BSN:";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(304, 2);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 15);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "BSN:";
             // 
             // label9
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(43, 83);
-            label9.Name = "label9";
-            label9.Size = new Size(94, 15);
-            label9.TabIndex = 24;
-            label9.Text = "Phone Number: ";
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(43, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 15);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Phone Number: ";
             // 
             // nudPhoneNumber
             // 
-            nudPhoneNumber.Location = new Point(43, 101);
-            nudPhoneNumber.Maximum = new decimal(new int[] { 1874919424, 2328306, 0, 0 });
-            nudPhoneNumber.Name = "nudPhoneNumber";
-            nudPhoneNumber.Size = new Size(255, 27);
-            nudPhoneNumber.TabIndex = 23;
+            this.nudPhoneNumber.Location = new System.Drawing.Point(43, 101);
+            this.nudPhoneNumber.Maximum = new decimal(new int[] {
+            1874919424,
+            2328306,
+            0,
+            0});
+            this.nudPhoneNumber.Name = "nudPhoneNumber";
+            this.nudPhoneNumber.Size = new System.Drawing.Size(255, 27);
+            this.nudPhoneNumber.TabIndex = 23;
             // 
             // btnAddContract
             // 
-            btnAddContract.Location = new Point(440, 183);
-            btnAddContract.Name = "btnAddContract";
-            btnAddContract.Size = new Size(259, 28);
-            btnAddContract.TabIndex = 22;
-            btnAddContract.Text = "Add Contract";
-            btnAddContract.UseVisualStyleBackColor = true;
+            this.btnAddContract.Location = new System.Drawing.Point(440, 183);
+            this.btnAddContract.Name = "btnAddContract";
+            this.btnAddContract.Size = new System.Drawing.Size(259, 28);
+            this.btnAddContract.TabIndex = 22;
+            this.btnAddContract.Text = "Add Contract";
+            this.btnAddContract.UseVisualStyleBackColor = true;
             // 
             // nudHouseNumber
             // 
-            nudHouseNumber.Location = new Point(565, 101);
-            nudHouseNumber.Maximum = new decimal(new int[] { 1874919424, 2328306, 0, 0 });
-            nudHouseNumber.Name = "nudHouseNumber";
-            nudHouseNumber.Size = new Size(255, 27);
-            nudHouseNumber.TabIndex = 21;
+            this.nudHouseNumber.Location = new System.Drawing.Point(565, 101);
+            this.nudHouseNumber.Maximum = new decimal(new int[] {
+            1874919424,
+            2328306,
+            0,
+            0});
+            this.nudHouseNumber.Name = "nudHouseNumber";
+            this.nudHouseNumber.Size = new System.Drawing.Size(255, 27);
+            this.nudHouseNumber.TabIndex = 21;
             // 
             // nudWage
             // 
-            nudWage.Location = new Point(304, 101);
-            nudWage.Maximum = new decimal(new int[] { 1419065408, 2, 0, 0 });
-            nudWage.Name = "nudWage";
-            nudWage.Size = new Size(254, 27);
-            nudWage.TabIndex = 20;
+            this.nudWage.Location = new System.Drawing.Point(304, 101);
+            this.nudWage.Maximum = new decimal(new int[] {
+            1419065408,
+            2,
+            0,
+            0});
+            this.nudWage.Name = "nudWage";
+            this.nudWage.Size = new System.Drawing.Size(254, 27);
+            this.nudWage.TabIndex = 20;
             // 
             // nudBSN
             // 
-            nudBSN.Location = new Point(304, 20);
-            nudBSN.Maximum = new decimal(new int[] { 276447232, 23283, 0, 0 });
-            nudBSN.Name = "nudBSN";
-            nudBSN.Size = new Size(254, 27);
-            nudBSN.TabIndex = 19;
+            this.nudBSN.Location = new System.Drawing.Point(304, 20);
+            this.nudBSN.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.nudBSN.Name = "nudBSN";
+            this.nudBSN.Size = new System.Drawing.Size(254, 27);
+            this.nudBSN.TabIndex = 19;
             // 
             // tbFirstName
             // 
-            tbFirstName.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbFirstName.Location = new Point(43, 20);
-            tbFirstName.Margin = new Padding(3, 2, 3, 2);
-            tbFirstName.Name = "tbFirstName";
-            tbFirstName.PlaceholderText = "First Name";
-            tbFirstName.Size = new Size(255, 24);
-            tbFirstName.TabIndex = 0;
+            this.tbFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbFirstName.Location = new System.Drawing.Point(43, 20);
+            this.tbFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.PlaceholderText = "First Name";
+            this.tbFirstName.Size = new System.Drawing.Size(255, 24);
+            this.tbFirstName.TabIndex = 0;
             // 
             // tbPassword
             // 
-            tbPassword.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbPassword.Location = new Point(304, 141);
-            tbPassword.Margin = new Padding(3, 2, 3, 2);
-            tbPassword.Name = "tbPassword";
-            tbPassword.PlaceholderText = "Password";
-            tbPassword.Size = new Size(255, 24);
-            tbPassword.TabIndex = 18;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbPassword.Location = new System.Drawing.Point(304, 141);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PlaceholderText = "Password";
+            this.tbPassword.Size = new System.Drawing.Size(255, 24);
+            this.tbPassword.TabIndex = 18;
             // 
             // tbZipCode
             // 
-            tbZipCode.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbZipCode.Location = new Point(565, 141);
-            tbZipCode.Margin = new Padding(3, 2, 3, 2);
-            tbZipCode.Name = "tbZipCode";
-            tbZipCode.PlaceholderText = "ZipCode";
-            tbZipCode.Size = new Size(255, 24);
-            tbZipCode.TabIndex = 9;
+            this.tbZipCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbZipCode.Location = new System.Drawing.Point(565, 141);
+            this.tbZipCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbZipCode.Name = "tbZipCode";
+            this.tbZipCode.PlaceholderText = "ZipCode";
+            this.tbZipCode.Size = new System.Drawing.Size(255, 24);
+            this.tbZipCode.TabIndex = 9;
             // 
             // tbEmail
             // 
-            tbEmail.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbEmail.Location = new Point(43, 141);
-            tbEmail.Margin = new Padding(3, 2, 3, 2);
-            tbEmail.Name = "tbEmail";
-            tbEmail.PlaceholderText = "Email";
-            tbEmail.Size = new Size(255, 24);
-            tbEmail.TabIndex = 17;
+            this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbEmail.Location = new System.Drawing.Point(43, 141);
+            this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.PlaceholderText = "Email";
+            this.tbEmail.Size = new System.Drawing.Size(255, 24);
+            this.tbEmail.TabIndex = 17;
             // 
             // tbStreet
             // 
-            tbStreet.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbStreet.Location = new Point(565, 59);
-            tbStreet.Margin = new Padding(3, 2, 3, 2);
-            tbStreet.Name = "tbStreet";
-            tbStreet.PlaceholderText = "Street";
-            tbStreet.Size = new Size(255, 24);
-            tbStreet.TabIndex = 7;
+            this.tbStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbStreet.Location = new System.Drawing.Point(565, 59);
+            this.tbStreet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbStreet.Name = "tbStreet";
+            this.tbStreet.PlaceholderText = "Street";
+            this.tbStreet.Size = new System.Drawing.Size(255, 24);
+            this.tbStreet.TabIndex = 7;
             // 
             // tbLastName
             // 
-            tbLastName.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbLastName.Location = new Point(43, 59);
-            tbLastName.Margin = new Padding(3, 2, 3, 2);
-            tbLastName.Name = "tbLastName";
-            tbLastName.PlaceholderText = "Last Name";
-            tbLastName.Size = new Size(255, 24);
-            tbLastName.TabIndex = 1;
+            this.tbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbLastName.Location = new System.Drawing.Point(43, 59);
+            this.tbLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbLastName.Name = "tbLastName";
+            this.tbLastName.PlaceholderText = "Last Name";
+            this.tbLastName.Size = new System.Drawing.Size(255, 24);
+            this.tbLastName.TabIndex = 1;
             // 
             // tbCity
             // 
-            tbCity.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbCity.Location = new Point(565, 20);
-            tbCity.Margin = new Padding(3, 2, 3, 2);
-            tbCity.Name = "tbCity";
-            tbCity.PlaceholderText = "City";
-            tbCity.Size = new Size(255, 24);
-            tbCity.TabIndex = 6;
+            this.tbCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbCity.Location = new System.Drawing.Point(565, 20);
+            this.tbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbCity.Name = "tbCity";
+            this.tbCity.PlaceholderText = "City";
+            this.tbCity.Size = new System.Drawing.Size(255, 24);
+            this.tbCity.TabIndex = 6;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(86, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 18);
-            label1.TabIndex = 16;
-            // 
-            // tbBankAccount
-            // 
-            tbBankAccount.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbBankAccount.Location = new Point(304, 59);
-            tbBankAccount.Margin = new Padding(3, 2, 3, 2);
-            tbBankAccount.Name = "tbBankAccount";
-            tbBankAccount.PlaceholderText = "IBAN";
-            tbBankAccount.Size = new Size(255, 24);
-            tbBankAccount.TabIndex = 5;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(86, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 18);
+            this.label1.TabIndex = 16;
             // 
             // cbRole
             // 
-            cbRole.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(150, 183);
-            cbRole.Margin = new Padding(3, 2, 3, 2);
-            cbRole.Name = "cbRole";
-            cbRole.Size = new Size(255, 28);
-            cbRole.TabIndex = 14;
+            this.cbRole.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Location = new System.Drawing.Point(150, 183);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(255, 28);
+            this.cbRole.TabIndex = 14;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(1, 32, 15);
-            panel2.Controls.Add(label6);
-            panel2.Location = new Point(399, 195);
-            panel2.Margin = new Padding(3, 2, 3, 2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(857, 83);
-            panel2.TabIndex = 28;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(32)))), ((int)(((byte)(15)))));
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Location = new System.Drawing.Point(399, 195);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(857, 83);
+            this.panel2.TabIndex = 28;
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.Transparent;
-            label6.Location = new Point(236, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(384, 65);
-            label6.TabIndex = 0;
-            label6.Text = "Create Employee";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(236, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(384, 65);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Create Employee";
             // 
             // btnCreateEmployee
             // 
-            btnCreateEmployee.BackColor = Color.FromArgb(1, 32, 15);
-            btnCreateEmployee.FlatAppearance.BorderSize = 0;
-            btnCreateEmployee.FlatStyle = FlatStyle.Flat;
-            btnCreateEmployee.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCreateEmployee.ForeColor = Color.White;
-            btnCreateEmployee.Location = new Point(660, 528);
-            btnCreateEmployee.Margin = new Padding(3, 2, 3, 2);
-            btnCreateEmployee.Name = "btnCreateEmployee";
-            btnCreateEmployee.Size = new Size(345, 54);
-            btnCreateEmployee.TabIndex = 12;
-            btnCreateEmployee.Text = "Create";
-            btnCreateEmployee.UseVisualStyleBackColor = false;
-            btnCreateEmployee.Click += btnCreateEmployee_Click;
+            this.btnCreateEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(32)))), ((int)(((byte)(15)))));
+            this.btnCreateEmployee.FlatAppearance.BorderSize = 0;
+            this.btnCreateEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateEmployee.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnCreateEmployee.Location = new System.Drawing.Point(660, 528);
+            this.btnCreateEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateEmployee.Name = "btnCreateEmployee";
+            this.btnCreateEmployee.Size = new System.Drawing.Size(345, 54);
+            this.btnCreateEmployee.TabIndex = 12;
+            this.btnCreateEmployee.Text = "Create";
+            this.btnCreateEmployee.UseVisualStyleBackColor = false;
             // 
             // EmployeeManagement
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1277, 638);
-            Controls.Add(tabControl1);
-            Name = "EmployeeManagement";
-            Text = "EmployeeManagement";
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudPhoneNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudHouseNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudWage).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudBSN).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1277, 638);
+            this.Controls.Add(this.tabControl1);
+            this.Name = "EmployeeManagement";
+            this.Text = "EmployeeManagement";
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPhoneNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBSN)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -672,7 +673,6 @@
         private TextBox tbLastName;
         private TextBox tbCity;
         private Label label1;
-        private TextBox tbBankAccount;
         private ComboBox cbRole;
         private Panel panel2;
         private Label label6;
