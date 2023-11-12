@@ -22,18 +22,14 @@
 				<div class="collapse navbar-collapse" id="n_bar">
 					<ul class="navbar-nav nav-fill w-100">
 						<li class="nav-item mt-1"><a class="nav-link text-light" asp-area="" asp-page="/Ticket">Buy Tickets</a></li>
-						@*@if (User.Identity.IsAuthenticated)
+						@if (User.Identity.IsAuthenticated)
 						{
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Schedule">My Schedule</a></li>
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/AnimalShift">Animal Shift</a></li>
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/LeaveRequestHome">Leave Request</a></li>
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Availability">Availability</a></li>
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Logout">Log out</a></li>
+							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Profile">Profile</a></li>
 						}
 						else
 						{
 							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/login">Log in</a></li>
-						}*@
+						}
 					</ul>
 				</div>
 			</div>
