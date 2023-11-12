@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace Desktop.Forms
 {
@@ -17,6 +18,7 @@ namespace Desktop.Forms
     {
 
         public UserManager userManager = new UserManager(new UserDataAccess());
+        public CredentialsManager cm = new CredentialsManager(new CredentialsDataAccess());
         private List<Role> roles = new List<Role>();
         private List<Employee> employees1;
         public EmployeeManagement(Employee employee)
@@ -254,5 +256,15 @@ namespace Desktop.Forms
                 dgvEmployee.Rows[rowIndex].Cells["Role"].Value = emp.Role;
             }
         }
-    }
+
+		private void btnAddProfile_Click(object sender, EventArgs e)
+		{
+            int empID = Convert.ToInt32(tbID.Text);
+            string pass = tbPass.Text;
+            string salt = BCryptNet.GenerateSalt();
+            string hashPass = BCryptNet.HashPassword(pass, salt);
+
+            cm.AddProfile(empID, hashPass, salt);
+		}
+	}
 }

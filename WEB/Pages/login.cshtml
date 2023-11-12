@@ -1,0 +1,36 @@
+﻿@page
+@model WEB.Pages.loginModel
+@{
+}
+
+<partial name="_ValidationScriptsPartial" />
+<section class="login">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form method="post">
+
+                    <div class="form-outline mb-4">
+                        <label asp-for="cred.EmpID" class="form-label text-dark"></label>
+                        <input asp-for="cred.EmpID" class="form-control form-control-lg" type="ID">
+                        <span asp-validation-for="cred.EmpID"></span>
+                    </div>
+
+                    <div class="form-outline mb-3">
+                        <label asp-for="cred.HashPass" class="form-label text-dark"></label>
+                        <input asp-for="cred.HashPass" class="form-control form-control-lg" type="password">
+                        <span asp-validation-for="cred.HashPass"></span>
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-outline-dark btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
