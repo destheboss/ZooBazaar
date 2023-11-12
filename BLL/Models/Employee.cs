@@ -22,6 +22,7 @@ namespace BLL.Models
         public string Street { get => this.street; set => this.street = value; }
         public string ZipCode { get => this.zipCode; set => this.zipCode = value; }
         public string HouseNumber { get => this.houseNumber; set => this.houseNumber = value; }
+        public List<Employee> employees { get; set; }
 
         //public Employee(int id, string email, string password, string firstName, string lastName,
         //    DateTime birthDate, int phoneNumber, int bsn, double wage, Role role, string city,
@@ -55,5 +56,6 @@ namespace BLL.Models
         {
             this.wage = wage;
         }
+        
     }
 }

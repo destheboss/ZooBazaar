@@ -22,8 +22,6 @@ namespace BLL.Models
 
         //public AnimalStatus AnimalStatus { get; private set; }
 
-        public Animal() { }
-
         public Animal(int id)
         {
             Id = id;

@@ -1,0 +1,30 @@
+﻿@page
+@model WEB.Pages.CaretakerModel
+<html>
+<head>
+    <title>Caretaker Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, @Model.firstName!</h1>
+    
+    <h2>Basic Information:</h2>
+    <p>Contact Info: @Model.email</p>
+@*    <p>Expertise: @Model.Expertise</p>
+    <p>Availability: @Model.Availability</p>*@
+    
+    <h2>Assigned Tasks:</h2>
+    <ul>
+@*        @foreach (var task in Model.AssignedTasks)
+        {
+            <li>@task.TaskDescription - Due: @task.DueDate</li>
+        }*@
+        <h3>No Tasks to do yet!</h3>
+    </ul>
+    
+    <h2>Add or Edit Notes:</h2>
+    <form method="post">
+        <textarea rows="4" cols="50" asp-for="NewNote"></textarea>
+        <button type="submit">Save Note</button>
+    </form>
+</body>
+</html>

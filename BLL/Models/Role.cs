@@ -10,6 +10,7 @@ namespace BLL.Models
     {
         Admin,
         Manager,
-        Staff
+        Staff,
+        Caretaker
     }
 }

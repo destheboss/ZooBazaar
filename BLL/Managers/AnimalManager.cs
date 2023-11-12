@@ -33,6 +33,16 @@ namespace BLL.Managers
         {
             return animalData.GetAnimalById(animalId);
         }
+        //Implement for next itteration
+        //public void AddAnimalNote(AnimalNotes newNote)
+        //{
+        //    AnimalNotes.Add(newNote);
+        //}
+
+        public void SaveChanges()
+        {
+            SaveChanges(); 
+        }
 
         public bool AddAnimal(Animal animal)
         {

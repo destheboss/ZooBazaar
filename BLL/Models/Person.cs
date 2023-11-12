@@ -8,13 +8,13 @@ namespace BLL.Models
 {
     public abstract class Person
     {
-        private int id;
-        private string email;
-        private string password;
-        private string firstName;
-        private string lastName;
-        private DateTime birthDate;
-        private int phoneNumber;
+        public int id;
+        public string email;
+        public string password;
+        public string firstName;
+        public string lastName;
+        public DateTime birthDate;
+        public int phoneNumber;
 
         public int Id { get => this.id; set => this.id = value; }
         public string Email { get => this.email; set => this.email = value; }
