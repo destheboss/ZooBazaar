@@ -1,0 +1,19 @@
+﻿@page
+@model WEB.Pages.AnimalManagementModel
+<html>
+<head>
+    <title>Animal Management</title>
+</head>
+<body>
+    <h1>Available Animals</h1>
+    <ul>
+        @foreach (var animal in Model.AvailableAnimals)
+        {
+                <li>
+                <a asp-page="./AnimalDetails" asp-route-animalId="@animal.Id">@animal.AnimalType</a>
+                    <button asp-page-handler="Assign a visit for the caretaker" asp-route-animalId="@animal.AnimalName">Assign</button>
+                </li>
+        }
+    </ul>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@page
+@model WEB.Pages.CaretakerModel
+<html>
+<head>
+    <title>Caretaker Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, @Model.FirstName!</h1>
+
+    <h2>Basic Information:</h2>
+    <p>Contact Info: @Model.Email</p>
+    <p>Role: @Model.EmployeeRole</p>
+
+    <h2>Assigned Tasks:</h2>
+    <ul>
+
+        <h3>No tasks yet!</h3>
+        @* If you have a list of assigned tasks in the model *@
+        @* @foreach (var task in Model.AssignedTasks)
+        {
+        <li>@task.TaskDescription - Due: @task.DueDate</li>
+        }
+        If the task list is empty, display a message:
+        *@
+@*        @if (Model.AssignedTasks == null || !Model.AssignedTasks.Any())
+        {
+            <h3>No Tasks to do yet!</h3>
+        }
+        else
+        {
+            @foreach (var task in Model.AssignedTasks)
+            {
+                <li>@task.TaskDescription - Due: @task.DueDate</li>
+            }
+        }*@
+    </ul>
+
+    <h2>Add or Edit Notes:</h2>
+    <form method="post">
+        <textarea rows="4" cols="50" asp-for="NewNote"></textarea>
+        <button type="submit">Save Note</button>
+    </form>
+</body>
+</html>

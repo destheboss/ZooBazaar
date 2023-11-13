@@ -62,7 +62,7 @@ namespace DAL
             {
                 using (MySqlConnection con = ConnectionString.Connection())
                 {
-                    string sqlQuery = "SELECT a.Id, a.Name, a.Weight, a.DateOfBirth, a.Status, at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName FROM Animal as a LEFT JOIN Animaltype as at ON a.AnimalTypeId = at.Id LEFT JOIN Location as al ON a.LocationId = al.Id WHERE a.Status = 'Alive' ";
+                    string sqlQuery = "SELECT a.Id, a.Name, a.Weight, a.DateOfBirth, /*a.Status,*/ at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName FROM Animal as a LEFT JOIN Animaltype as at ON a.AnimalTypeId = at.Id LEFT JOIN Location as al ON a.LocationId = al.Id /*WHERE a.Status = 'Alive'*/ ";
                     MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
                     con.Open();
