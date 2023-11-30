@@ -1,5 +1,6 @@
 ﻿using BLL.Interfaces;
 using BLL.Models;
+using BLL.Models.AutoSchedule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,27 @@ namespace BLL.Managers
         }
         public bool DeleteEmployee(int id) { 
             return data.DeleteEmployee(id); 
+        }
+        public int DoesEmployeehaveMaxHours(DateTime startofweek, int empid)
+        {
+            return data.DoesEmployeehaveMaxHours(startofweek, empid);
+        }
+        public bool CanEmpBeScheduled(DateTime day, int empid)
+        {
+            return data.CanEmpBeScheduled(day, empid);
+
+        }
+        public List<Employee> GetallAvailableEmployees(Shift s)
+        {
+            return data.GetAllAvailableEmployees(s);
+        }
+        public List<Employee> GetAllAssignedEmployees(Shift s)
+        {
+            return data.GetAllAssignedEmployees(s);
+        }
+        public List<int> GetEmployeeswithleastshifts(DateTime startofweek)
+        {
+            return data.GetEmployeeswithleastshifts(startofweek);
         }
 
 

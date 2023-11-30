@@ -1,6 +1,7 @@
 using BLL.Managers;
 using BLL.Models;
 using DAL;
+using Desktop.Forms;
 
 namespace Desktop
 {
@@ -100,6 +101,16 @@ namespace Desktop
         {
             userManager.SetSetting("loggedAs", null);
             OpenLogIn();
+        }
+
+        private void btnEmployeeShifts_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.ShiftForm());
+        }
+
+        private void btnAnimalShift_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AnimalShiftForm());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BLL.Models;
+using BLL.Models.AutoSchedule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,11 @@ namespace BLL.Interfaces
         //DESKTOP AUTHENTICATION
         void SetSetting(string key, dynamic? value);
         dynamic? GetSetting(string key);
+        bool CanEmpBeScheduled(DateTime day, int empid);
+        bool DeleteEmployeeShift(int id);
+        int DoesEmployeehaveMaxHours(DateTime startofweek, int empid);
+        List<Employee> GetAllAssignedEmployees(Shift shift);
+        List<Employee> GetAllAvailableEmployees(Shift shift);
+        List<int> GetEmployeeswithleastshifts(DateTime startofweek);
     }
 }

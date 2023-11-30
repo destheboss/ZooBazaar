@@ -10,6 +10,7 @@ using crypto;
 using MySql.Data.MySqlClient;
 using BLL.Models;
 using ClassLibrary.Extentions;
+using BLL.Models.AutoSchedule;
 
 namespace DAL
 {
@@ -282,9 +283,238 @@ namespace DAL
                 }
             }
         }
+        public List<int> GetEmployeeswithleastshifts(DateTime startofweek)
+        {
+            MySqlConnection Conn = ConnectionString.Connection();
+            List<int> employeeids = new List<int>();
+            try
+            {
+                using (Conn)
+                {
+                    string sql = "select e.id, COALESCE(t.total,0) as amountofshifts from employee as e left JOIN (SELECT se.employeeid as empid,COUNT(se.employeeid)as total FROM `shift_has_employee` as se inner join shift as s on s.ID = se.shiftid where Date(date) between @date and @enddate GROUP by se.employeeid) t ON t.empid = e.id order by amountofshifts;";
+                    MySqlCommand cmd = new MySqlCommand(sql, Conn);
+                    cmd.Parameters.AddWithValue("@date", startofweek);
+                    cmd.Parameters.AddWithValue("@enddate", startofweek.AddDays(7));
+                    Conn.Open();
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        employeeids.Add(Convert.ToInt32(dr[0]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error " + ex.Message);
+            }
+            return employeeids;
+        }
 
+        public List<Employee> GetAllAvailableEmployees(Shift shift)
+        {
+            using (MySqlConnection Conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    Conn.Open();
+                    string sql = "SELECT employee.* FROM employee WHERE employee.Id NOT IN (SELECT employeeid FROM shift_has_employee where shiftid = @shiftid)";
+                    var cmd = new MySqlCommand(sql, Conn);
+                    cmd.Parameters.AddWithValue("@shiftId", shift.Id);
+                    var reader = cmd.ExecuteReader();
+                    List<Employee> employees = new List<Employee>();
+                    while (reader.Read())
+                    {
+                        Extentions.ParseEnum<Role>(reader.GetString(9));
+                        //Employee employee = new Employee(
+                        //    reader.GetInt32(0),
+                        //    reader.GetString(1),
+                        //    reader.GetString(2),
+                        //    reader.GetInt32(3),
+                        //    reader.GetString(4),
+                        //    reader.GetString(8),
+                        //    reader.GetInt32(5),
+                        //    reader.GetString(6),
+                        //    reader.GetInt32(7),
+                        //    Extentions.ParseEnum<Role>(reader.GetString(9)),
+                        //    reader.GetString(10),
+                        //    reader.GetString(11),
+                        //    reader.GetInt32(12),
+                        //    reader.GetString(13),
+                        //    reader.GetInt32(14));
+                        //employees.Add(employee);
+                        Employee employee = new Employee(
+                             reader.GetInt32("id"),
+                            reader.GetString("email"),
+                            reader.GetString("password"),
+                            reader.GetString("firstName"),
+                            reader.GetString("lastName"),
+                            reader.GetInt32("phoneNumber"),
+                            reader.GetInt32("bsn"),
+                            reader.GetInt32("wage"),
+                            Extentions.ParseEnum<Role>(reader.GetString("role")),
+                            reader.GetString("city"),
+                            reader.GetString("street"),
+                            reader.GetString("zipCode"),
+                            reader.GetString("houseNumber"));
+                        employees.Add(employee);
+                    }
+                    return employees;
+                }
+                catch (InvalidOperationException)
+                {
+                    return new List<Employee>();
+                }
+                finally
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+        public List<Employee> GetAllAssignedEmployees(Shift shift)
+        {
+            using (MySqlConnection Conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    Conn.Open();
+                    string sql = "select employee.* FROM employee inner join Shift_has_employee on employee.id = employeeid where shiftid = @shiftId";
+                    var cmd = new MySqlCommand(sql, Conn);
+                    cmd.Parameters.AddWithValue("@shiftId", shift.Id);
+                    var reader = cmd.ExecuteReader();
+                    List<Employee> employees = new List<Employee>();
+                    while (reader.Read())
+                    {
+                        Extentions.ParseEnum<Role>(reader.GetString(9));
+                        //Employee employee = new Employee(
+                        //    reader.GetInt32(0),
+                        //    reader.GetString(1),
+                        //    reader.GetString(2),
+                        //    reader.GetInt32(3),
+                        //    reader.GetString(4),
+                        //    reader.GetString(8),
+                        //    reader.GetInt32(5),
+                        //    reader.GetString(6),
+                        //    reader.GetInt32(7),
+                        //    Extentions.ParseEnum<Role>(reader.GetString(9)),
+                        //    reader.GetString(10),
+                        //    reader.GetString(11),
+                        //    reader.GetInt32(12),
+                        //    reader.GetString(13));
+                        //employees.Add(employee);
 
+                        Employee employee = new Employee(
+                             reader.GetInt32("id"),
+                            reader.GetString("email"),
+                            reader.GetString("password"),
+                            reader.GetString("firstName"),
+                            reader.GetString("lastName"),
+                            reader.GetInt32("phoneNumber"),
+                            reader.GetInt32("bsn"),
+                            reader.GetInt32("wage"),
+                            Extentions.ParseEnum<Role>(reader.GetString("role")),
+                            reader.GetString("city"),
+                            reader.GetString("street"),
+                            reader.GetString("zipCode"),
+                            reader.GetString("houseNumber"));
+                        employees.Add(employee);
+                    }
+                    return employees;
+                }
+                catch (InvalidOperationException)
+                {
+                    return new List<Employee>();
+                }
+                finally
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+        public int DoesEmployeehaveMaxHours(DateTime startofweek, int empid)
+        {
+            using (var conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.CommandText = "select count(*) from shift where Date(Date) between @StartOfShift and @EndOfShift and ID in (select ShiftID from `shift_has_employee` where EmployeeID = @EmployeeID)";
+                    cmd.Parameters.AddWithValue("@StartOfShift", startofweek);
+                    cmd.Parameters.AddWithValue("@EndOfShift", startofweek.AddDays(7));
+                    cmd.Parameters.AddWithValue("@employeeID", empid);
+                    cmd.Connection = conn;
+                    cmd.Connection.Open();
+                    int rows = Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Close();
+                    return rows;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+        public bool CanEmpBeScheduled(DateTime day, int empid)
+        {
+            using (var conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.CommandText = "Select S.id from Shift as S inner join shift_has_employee as SHE on S.id = SHE.ShiftID where S.Date = @Yesterdate and SHE.EmployeeID = @Employeeid and S.shifttime = 2";
+                    cmd.Parameters.AddWithValue("@Date", day);
+                    cmd.Parameters.AddWithValue("@Yesterdate", day.AddDays(-1));
+                    cmd.Parameters.AddWithValue("@EmployeeID", empid);
+                    cmd.Connection = conn;
+                    cmd.Connection.Open();
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
 
+        }
+        public bool DeleteEmployeeShift(int id)
+        {
+            //bool success = false;
+            using (MySqlConnection conn = ConnectionString.Connection())
+            {
+                conn.Open();
+                string sqlShift = "DELETE FROM shift_has_employee WHERE EmployeeId = @Id";
+                MySqlCommand cmdShift = new MySqlCommand(sqlShift, conn);
+                cmdShift.Parameters.AddWithValue("@Id", id);
+                cmdShift.ExecuteNonQuery();
+
+                return true;
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
 
         //NEEDED FOR USER AUTHENTICATION DESKTOP
         public void SetSetting(string key, dynamic? value)
