@@ -24,7 +24,7 @@ namespace DAL
                     string sql = "INSERT INTO Shift ( Date , shifttime) VALUES ( @Date , @shifttime)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Date", shift.Date);
-                    cmd.Parameters.AddWithValue("@shifttime", shift.Shifttime);
+                    cmd.Parameters.AddWithValue("@shifttime", shift.Shifttime.ToString());
                     bool succes = cmd.ExecuteNonQuery() > 0;
                     id = Convert.ToInt32(cmd.LastInsertedId);
                     return succes;

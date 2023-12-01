@@ -28,80 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnEvening = new Button();
-            btnafternoon = new Button();
-            BtnMorning = new Button();
-            panel1 = new Panel();
-            LbDay = new Label();
-            SuspendLayout();
+            this.btnEvening = new System.Windows.Forms.Button();
+            this.btnafternoon = new System.Windows.Forms.Button();
+            this.BtnMorning = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LbDay = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // btnEvening
             // 
-            btnEvening.FlatAppearance.BorderSize = 0;
-            btnEvening.FlatStyle = FlatStyle.Flat;
-            btnEvening.Location = new Point(72, 71);
-            btnEvening.Name = "btnEvening";
-            btnEvening.Size = new Size(125, 25);
-            btnEvening.TabIndex = 9;
-            btnEvening.Text = "Evening";
-            btnEvening.UseVisualStyleBackColor = true;
-            btnEvening.Click += btnEvening_Click;
+            this.btnEvening.FlatAppearance.BorderSize = 0;
+            this.btnEvening.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEvening.Location = new System.Drawing.Point(72, 71);
+            this.btnEvening.Name = "btnEvening";
+            this.btnEvening.Size = new System.Drawing.Size(125, 25);
+            this.btnEvening.TabIndex = 9;
+            this.btnEvening.Text = "Evening";
+            this.btnEvening.UseVisualStyleBackColor = true;
+            this.btnEvening.Click += new System.EventHandler(this.btnEvening_Click_1);
             // 
             // btnafternoon
             // 
-            btnafternoon.FlatAppearance.BorderSize = 0;
-            btnafternoon.FlatStyle = FlatStyle.Flat;
-            btnafternoon.Location = new Point(72, 40);
-            btnafternoon.Name = "btnafternoon";
-            btnafternoon.Size = new Size(125, 25);
-            btnafternoon.TabIndex = 8;
-            btnafternoon.Text = "Afternoon";
-            btnafternoon.UseVisualStyleBackColor = true;
-            btnafternoon.Click += btnafternoon_Click;
+            this.btnafternoon.FlatAppearance.BorderSize = 0;
+            this.btnafternoon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnafternoon.Location = new System.Drawing.Point(72, 40);
+            this.btnafternoon.Name = "btnafternoon";
+            this.btnafternoon.Size = new System.Drawing.Size(125, 25);
+            this.btnafternoon.TabIndex = 8;
+            this.btnafternoon.Text = "Afternoon";
+            this.btnafternoon.UseVisualStyleBackColor = true;
+            this.btnafternoon.Click += new System.EventHandler(this.btnafternoon_Click_1);
             // 
             // BtnMorning
             // 
-            BtnMorning.FlatAppearance.BorderSize = 0;
-            BtnMorning.FlatStyle = FlatStyle.Flat;
-            BtnMorning.Location = new Point(72, 7);
-            BtnMorning.Name = "BtnMorning";
-            BtnMorning.Size = new Size(125, 25);
-            BtnMorning.TabIndex = 7;
-            BtnMorning.Text = "Morning";
-            BtnMorning.UseVisualStyleBackColor = true;
-            BtnMorning.Click += BtnMorning_Click;
+            this.BtnMorning.FlatAppearance.BorderSize = 0;
+            this.BtnMorning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMorning.Location = new System.Drawing.Point(72, 7);
+            this.BtnMorning.Name = "BtnMorning";
+            this.BtnMorning.Size = new System.Drawing.Size(125, 25);
+            this.BtnMorning.TabIndex = 7;
+            this.BtnMorning.Text = "Morning";
+            this.BtnMorning.UseVisualStyleBackColor = true;
+            this.BtnMorning.Click += new System.EventHandler(this.BtnMorning_Click_1);
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Black;
-            panel1.Location = new Point(56, 8);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(4, 90);
-            panel1.TabIndex = 6;
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(56, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(4, 90);
+            this.panel1.TabIndex = 6;
             // 
             // LbDay
             // 
-            LbDay.AutoSize = true;
-            LbDay.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            LbDay.Location = new Point(3, 30);
-            LbDay.Name = "LbDay";
-            LbDay.Size = new Size(56, 45);
-            LbDay.TabIndex = 5;
-            LbDay.Text = "00";
+            this.LbDay.AutoSize = true;
+            this.LbDay.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LbDay.Location = new System.Drawing.Point(3, 30);
+            this.LbDay.Name = "LbDay";
+            this.LbDay.Size = new System.Drawing.Size(56, 45);
+            this.LbDay.TabIndex = 5;
+            this.LbDay.Text = "00";
             // 
             // UserControlDays
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnEvening);
-            Controls.Add(btnafternoon);
-            Controls.Add(BtnMorning);
-            Controls.Add(panel1);
-            Controls.Add(LbDay);
-            Name = "UserControlDays";
-            Size = new Size(201, 104);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEvening);
+            this.Controls.Add(this.btnafternoon);
+            this.Controls.Add(this.BtnMorning);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.LbDay);
+            this.Name = "UserControlDays";
+            this.Size = new System.Drawing.Size(201, 104);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

@@ -91,7 +91,27 @@ namespace Desktop.Forms.ShiftNeccessities
             LbDay.Text = day.ToString();
         }
 
-        private void BtnMorning_Click(object sender, EventArgs e)
+
+        private void btnafternoon_Click_1(object sender, EventArgs e)
+        {
+            if (_afternoonshift != null)
+            {
+                var t = new Thread(() => Application.Run(new ShiftAssignmentForm(_afternoonshift, form)));
+                t.Start();
+            }
+            else
+            {
+                _afternoonshift = new Shift(_current, Shifttime.AfterNoon);
+                _manager.Create(_afternoonshift, out int id);
+                _afternoonshift.Id = id;
+                var t = new Thread(() => Application.Run(new ShiftAssignmentForm(_afternoonshift, form)));
+                t.Start();
+                form.refresh();
+            }
+
+        }
+
+        private void BtnMorning_Click_1(object sender, EventArgs e)
         {
             if (_morningshift != null)
             {
@@ -109,25 +129,7 @@ namespace Desktop.Forms.ShiftNeccessities
             }
         }
 
-        private void btnafternoon_Click(object sender, EventArgs e)
-        {
-            if (_afternoonshift != null)
-            {
-                var t = new Thread(() => Application.Run(new ShiftAssignmentForm(_afternoonshift, form)));
-                t.Start();
-            }
-            else
-            {
-                _afternoonshift = new Shift(_current, Shifttime.AfterNoon);
-                _manager.Create(_afternoonshift, out int id);
-                _afternoonshift.Id = id;
-                var t = new Thread(() => Application.Run(new ShiftAssignmentForm(_afternoonshift, form)));
-                t.Start();
-                form.refresh();
-            }
-        }
-
-        private void btnEvening_Click(object sender, EventArgs e)
+        private void btnEvening_Click_1(object sender, EventArgs e)
         {
             if (_evening != null)
             {

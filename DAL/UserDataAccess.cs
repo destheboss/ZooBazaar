@@ -324,7 +324,7 @@ namespace DAL
                     List<Employee> employees = new List<Employee>();
                     while (reader.Read())
                     {
-                        Extentions.ParseEnum<Role>(reader.GetString(9));
+                        //Extentions.ParseEnum<Role>(reader.GetString(9));
                         //Employee employee = new Employee(
                         //    reader.GetInt32(0),
                         //    reader.GetString(1),
@@ -385,7 +385,7 @@ namespace DAL
                     List<Employee> employees = new List<Employee>();
                     while (reader.Read())
                     {
-                        Extentions.ParseEnum<Role>(reader.GetString(9));
+                       // Extentions.ParseEnum<Role>(reader.GetString(9));
                         //Employee employee = new Employee(
                         //    reader.GetInt32(0),
                         //    reader.GetString(1),

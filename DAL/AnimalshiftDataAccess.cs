@@ -86,7 +86,7 @@ namespace DAL
                 try
                 {
                     conn.Open();
-                    string sql = "SELECT Animalshift.* ,a.Id as aid, a.Name as name, a.Weight, a.DateOfBirth, a.Status as astatus, at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName FROM AnimalShift inner JOIN Animal as a ON a.id = Animalshift.animalid LEFT JOIN Animaltype as at ON a.AnimalTypeId = at.Id LEFT JOIN Location as al ON a.LocationId = al.Id";
+                    string sql = "SELECT Animalshift.* ,a.Id as aid, a.Name as name, a.Weight, a.DateOfBirth, at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName FROM AnimalShift inner JOIN Animal as a ON a.id = Animalshift.animalid LEFT JOIN Animaltype as at ON a.AnimalTypeId = at.Id LEFT JOIN Location as al ON a.LocationId = al.Id";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader dr = cmd.ExecuteReader();
                     List<AnimalShift> Shifts = new List<AnimalShift>();
@@ -100,11 +100,11 @@ namespace DAL
                         DateTime birthday = (DateTime)dr["DateOfBirth"];
                         string animalTypeName = dr["AnimalTypeName"].ToString();
                         string animalLocationName = dr["AnimalLocationName"].ToString();
-                        AnimalStatus animalStatus = (AnimalStatus)System.Enum.Parse(typeof(AnimalStatus), dr["aStatus"].ToString());
+                        //AnimalStatus animalStatus = (AnimalStatus)System.Enum.Parse(typeof(AnimalStatus), dr["aStatus"].ToString());
 
                         AnimalType animalType = new AnimalType(animalTypeId, animalTypeName, null);
                         AnimalLocation animalLocation = new AnimalLocation(locationId, animalLocationName, null);
-                        Animal animal = new Animal(id, animalName, birthday, weight, animalType, animalLocation, animalStatus);
+                        Animal animal = new Animal(id, animalName, birthday, weight, animalType, animalLocation/*, animalStatus*/);
                         AnimalShift shift = new AnimalShift()
                         {
 

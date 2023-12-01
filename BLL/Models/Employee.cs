@@ -55,5 +55,9 @@ namespace BLL.Models
         {
             this.wage = wage;
         }
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }

@@ -44,36 +44,6 @@ namespace Desktop.Forms
             }
         }
 
-        private void BtnAssign_Click(object sender, EventArgs e)
-        {
-            if (LbxAvailable.SelectedItem != null && LbxAvailable.SelectedItem is Employee)
-            {
-                shiftManager.AssignEmployee(SelectedShift, (Employee)LbxAvailable.SelectedItem);
-                Updatelistboxes();
-                MessageBox.Show("Employee assigned");
-                if (employeeManager.GetAllAssignedEmployees(SelectedShift).Count() > 2)
-                {
-                    Sform.RefreshInvoke();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an employee to assign");
-            }
-        }
-
-        private void Btnunnasign_Click(object sender, EventArgs e)
-        {
-            if (LbxAssigned.SelectedItem != null && LbxAssigned.SelectedItem is Employee)
-            {
-                shiftManager.UnAssignEmployee(SelectedShift, (Employee)LbxAssigned.SelectedItem);
-                Updatelistboxes();
-            }
-            else
-            {
-                MessageBox.Show("Please select an employee to unassign");
-            }
-        }
         private void TbxFilterAssigned_TextChanged(object sender, EventArgs e)
         {
             List<Employee> Employees = employeeManager.GetallAvailableEmployees(SelectedShift);
@@ -96,6 +66,42 @@ namespace Desktop.Forms
                 LbxAvailable.Items.Add(t);
             }
 
+        }
+
+        private void BtnAssign_Click_1(object sender, EventArgs e)
+        {
+            if (LbxAvailable.SelectedItem != null && LbxAvailable.SelectedItem is Employee)
+            {
+                shiftManager.AssignEmployee(SelectedShift, (Employee)LbxAvailable.SelectedItem);
+                Updatelistboxes();
+                MessageBox.Show("Employee assigned");
+                if (employeeManager.GetAllAssignedEmployees(SelectedShift).Count() > 2)
+                {
+                    Sform.RefreshInvoke();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to assign");
+            }
+        }
+
+        private void LbxAvailable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btnunnasign_Click_1(object sender, EventArgs e)
+        {
+            if (LbxAssigned.SelectedItem != null && LbxAssigned.SelectedItem is Employee)
+            {
+                shiftManager.UnAssignEmployee(SelectedShift, (Employee)LbxAssigned.SelectedItem);
+                Updatelistboxes();
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to unassign");
+            }
         }
     }
 }
