@@ -23,20 +23,10 @@ namespace BLL.Models
         public string ZipCode { get => this.zipCode; set => this.zipCode = value; }
         public string HouseNumber { get => this.houseNumber; set => this.houseNumber = value; }
 
-        //public Employee(int id, string email, string password, string firstName, string lastName,
-        //    DateTime birthDate, int phoneNumber, int bsn, double wage, Role role, string city,
-        //     string street, string zipCode, string houseNumber)
-        //    : base(id, email, password, firstName, lastName, birthDate, phoneNumber)
-        //{
-        //    this.Bsn = bsn;
-        //    this.Wage = wage;
-        //    this.Role = role;
-        //    this.City = city;
-        //    this.Street = street;
-        //    this.ZipCode = zipCode;
-        //    this.HouseNumber = houseNumber;
-        //}
-        //Current Employee Creation
+
+        public Employee() 
+        { }
+
         public Employee(int id, string email, string password, string firstName, string lastName,
              int phoneNumber, int bsn, double wage, Role role, string city,
              string street, string zipCode, string houseNumber)
@@ -62,3 +52,18 @@ namespace BLL.Models
         }
     }
 }
+
+        //public Employee(int id, string email, string password, string firstName, string lastName,
+        //    DateTime birthDate, int phoneNumber, int bsn, double wage, Role role, string city,
+        //     string street, string zipCode, string houseNumber)
+        //    : base(id, email, password, firstName, lastName, birthDate, phoneNumber)
+        //{
+        //    this.Bsn = bsn;
+        //    this.Wage = wage;
+        //    this.Role = role;
+        //    this.City = city;
+        //    this.Street = street;
+        //    this.ZipCode = zipCode;
+        //    this.HouseNumber = houseNumber;
+        //}
+        //Current Employee Creation
