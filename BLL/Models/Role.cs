@@ -9,7 +9,10 @@ namespace BLL.Models
     public enum Role
     {
         Admin,
-        Manager,
-        Staff
+        Employee,
+        Caretaker,
+        Security,
+        Vet,
+        Cashier
     }
 }

@@ -237,7 +237,7 @@ namespace Desktop.Forms
                 weight_tb.Text = selectedRow.Cells["Weight"].Value.ToString();
                 animalLocation_cb.SelectedIndex = animalLocation_cb.FindStringExact(selectedRow.Cells["Location"].Value.ToString());
                 DtpDob.Value = Convert.ToDateTime(selectedRow.Cells["DateOfBirth"].Value);
-               //animalStatus_cb.SelectedIndex = animalStatus_cb.FindStringExact(selectedRow.Cells["AnimalStatus"].Value.ToString());
+                //animalStatus_cb.SelectedIndex = animalStatus_cb.FindStringExact(selectedRow.Cells["AnimalStatus"].Value.ToString());
 
                 addAnimal_btn.Hide();
                 removeAnimal_btn.Hide();
@@ -284,6 +284,18 @@ namespace Desktop.Forms
         private void viewAllAnimals_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void BtnAnimalschedule_Click(object sender, EventArgs e)
+        {
+            if (viewAllAnimals_dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = viewAllAnimals_dgv.SelectedRows[0];
+                int animalId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+
+                AnimalShiftForm animalShiftForm = new AnimalShiftForm(new Animal() { Id = animalId });
+                animalShiftForm.Show();
+            }
         }
 
 
