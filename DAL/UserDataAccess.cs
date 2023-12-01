@@ -10,6 +10,7 @@ using crypto;
 using MySql.Data.MySqlClient;
 using BLL.Models;
 using ClassLibrary.Extentions;
+using Org.BouncyCastle.Tls;
 
 namespace DAL
 {
@@ -256,6 +257,40 @@ namespace DAL
                 }
             }
         }
+
+        public void EmployeeSelfUpdate(int Id, string Email, int PhoneNumber, string City, string Street, string ZipCode, string HouseNumber)
+        {
+            MySqlCommand msqlcd;
+            using (var conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    string query = "UPDATE employee SET email = @email, phoneNumber = @phoneNumber, city = @city, street = @street, zipCode = @zipCode, houseNumber = @houseNumber WHERE id = @id";
+
+                    msqlcd = new MySqlCommand(query, conn);
+                    msqlcd.Parameters.AddWithValue("@id", Id);
+                    msqlcd.Parameters.AddWithValue("@email", Email);
+                    msqlcd.Parameters.AddWithValue("@phoneNumber", PhoneNumber);
+                    msqlcd.Parameters.AddWithValue("@city", City);
+                    msqlcd.Parameters.AddWithValue("@street", Street);
+                    msqlcd.Parameters.AddWithValue("@zipCode", ZipCode);
+                    msqlcd.Parameters.AddWithValue("@houseNumber", HouseNumber);
+                    conn.Open();
+                    msqlcd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+        }
+
         public bool DeleteEmployee(int id)
         {
             //bool success = false;

@@ -24,6 +24,9 @@ namespace BLL.Models
         public DateTime BirthDate { get => this.birthDate; set => this.birthDate = value; }
         public int PhoneNumber { get => this.phoneNumber; set => this.phoneNumber = value; }
 
+
+        public Person() { }
+
         public Person(int id, string email, string password, string firstName, string lastName, DateTime birthDate, int phoneNumber)
         {
             this.Id = id;

@@ -42,6 +42,10 @@ namespace BLL.Managers
         public bool DeleteEmployee(int id) { 
             return data.DeleteEmployee(id); 
         }
+        public void EmployeeSelfUpdate(int Id, string Email, int PhoneNumber, string City, string Street, string ZipCode, string HouseNumber)
+        {
+            data.EmployeeSelfUpdate(Id, Email, PhoneNumber, City, Street, ZipCode, HouseNumber);
+        }
 
 
 
