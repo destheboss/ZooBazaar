@@ -53,6 +53,7 @@ namespace BLL.Models
         public Employee(int id, string firstName, string lastName, int phoneNumber, string email, int wage)
             : base(id, email, firstName, lastName,  phoneNumber)
         {
+         
             this.wage = wage;
         }
         public override string ToString()
