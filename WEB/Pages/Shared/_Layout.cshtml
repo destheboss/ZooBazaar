@@ -24,27 +24,18 @@
                         <li class="nav-item mt-1">
                             <a class="nav-link text-light" asp-area="" asp-page="/Ticket">Buy Tickets</a>
                         </li>
-                        <li class="nav-item mt-1">
-                            <a class="nav-link text-light" asp-area="" asp-page="/login">Login</a>
-                        </li>
+                      
                         <li class="nav-item mt-1">
                             <a class="nav-link text-light" asp-area="" asp-page="/AnimalManagement">Animal Management</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Caretaker">Caretaker</a>
-                        </li>
-                        @*@if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated)
                         {
-                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Schedule">My Schedule</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/AnimalShift">Animal Shift</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/LeaveRequestHome">Leave Request</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Availability">Availability</a></li>
-                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Logout">Log out</a></li>
+                 
                         }
                         else
                         {
                         <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/login">Log in</a></li>
-                        }*@
+                        }
                     </ul>
                 </div>
             </div>
@@ -72,3 +63,8 @@
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+                     @*   <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Schedule">My Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/AnimalShift">Animal Shift</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/LeaveRequestHome">Leave Request</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Availability">Availability</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Logout">Log out</a></li>*@

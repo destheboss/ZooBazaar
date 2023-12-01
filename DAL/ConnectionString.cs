@@ -12,7 +12,7 @@ namespace DAL
         public static MySqlConnection Connection()
         {
             //return new MySqlConnection("server=localhost;database=zoobazar;uid=root;pwd=Cesekar4e");
-            return new MySqlConnection("Server=studmysql01.fhict.local;Uid=dbi507486;Database=dbi507486;Pwd=cesekar4e");
+            return new MySqlConnection("Server=studmysql01.fhict.local;Uid=dbi507486;Database=dbi507486;Pwd=Cesekar4e");
 
         }
     }

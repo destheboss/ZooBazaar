@@ -8,10 +8,23 @@ namespace BLL.Models
 {
     public class AnimalNotes
     {
-        public int AnimalNotesId { get; set; }
-        public int CaretakerId { get; set; }
+        public int NoteId { get; set; }
+        public int EmployeeId { get; set; }
         public int AnimalId { get; set; }
-        public string? Note { get; set; }
+        public string Note { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public AnimalNotes()
+        {
+
+        }
+        public AnimalNotes(int noteId, int employeeId, int animalId, string note, DateTime createdAt)
+        {
+            NoteId = noteId;
+            EmployeeId = employeeId;
+            AnimalId = animalId;
+            Note = note;
+            CreatedAt = createdAt;
+        }
     }
 }

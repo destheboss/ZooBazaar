@@ -48,5 +48,17 @@ namespace BLL.Managers
         {
             return animalData.UpdateAnimal(animal);
         }
+        public bool AddNote(AnimalNotes newnote)
+        {
+            return animalData.AddNote(newnote);
+        }
+        public List<BLL.Models.Task> GetIncompleteTasks(int employeeId)
+        {
+            return animalData.GetIncompleteTasks(employeeId);
+        }
+        public List<AnimalNotes> GetNotesByAnimalId(int animalId)
+        {
+            return animalData.GetNotesByAnimalId((int)animalId);
+        }
     }
 }

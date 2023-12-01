@@ -2,18 +2,75 @@
 @model WEB.Pages.AnimalManagementModel
 <html>
 <head>
-    <title>Animal Management</title>
+	<title>Animal Management</title>
 </head>
 <body>
-    <h1>Available Animals</h1>
-    <ul>
-        @foreach (var animal in Model.AvailableAnimals)
-        {
-                <li>
-                <a asp-page="./AnimalDetails" asp-route-animalId="@animal.Id">@animal.AnimalType</a>
-                    <button asp-page-handler="Assign a visit for the caretaker" asp-route-animalId="@animal.AnimalName">Assign</button>
-                </li>
-        }
-    </ul>
+	<h1>Available Animals</h1>
+	<ul>
+		@foreach (var animal in Model.AvailableAnimals)
+		{
+			<section style="background-color: transparent">
+				<div class="container py-2 t-4">
+					<div class="row justify-content-center mb-3">
+						<div class="col-md-12 col-xl-10">
+							<div class="round card shadow-0 text-light">
+								<div class="round card-body green d-flex flex-column">
+									<div class="row">
+										<div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+											<div class="bg-image hover-zoom ripple rounded ripple-surface">
+												<img src="/img/Wombatjpg.jpg class="w-100 round">
+												<a href="#!">
+													<div class="hover-overlay">
+														<div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+													</div>
+												</a>
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6 col-xl-6">
+											<h4>@animal.AnimalName </h4>
+											<hr>
+											<div class="mt-1 mb-1 text-muted small">
+												<span class="text-primary"> • </span>
+												<span class="text-light">Description: @animal.DateOfBirth</span>
+											</div>
+											<hr>
+											<div class="mt-1 mb-1 text-muted small">
+												<span class="text-primary"> • </span>
+												<span class="text-light">Special Guest: @animal.AnimalType</span>
+											</div>
+											<hr>
+											<div class="mt-1 mb-1 text-muted small">
+												<span class="text-primary"> • </span>
+												<span class="text-light">Location: @animal.AnimalLocation</span>
+											</div>
+										</div>
+
+										<div class="desktop col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+											<div class="d-flex flex-column mt-auto">
+												<form method="get" action="AnimalDetails">
+													<input type="hidden" name="id" value="@animal.Id">
+													<button class="btn btn-outline-light btn-lg" type="submit">Details</button>
+												</form>
+											</div>
+											<br></br>
+											<div class="d-flex flex-column mt-auto">
+												<form method="get" action="Caretaker">
+													<input type="hidden" name="id" value="@animal.Id">
+													<button class="btn btn-outline-light btn-lg" type="submit">Make a note </button>
+												</form>
+											</div>
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		}
+	</ul>
 </body>
 </html>

@@ -302,7 +302,6 @@
             this.viewAllAnimals_dgv.RowTemplate.Height = 29;
             this.viewAllAnimals_dgv.Size = new System.Drawing.Size(1338, 840);
             this.viewAllAnimals_dgv.TabIndex = 25;
-            this.viewAllAnimals_dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.viewAllAnimals_dgv_CellContentClick);
             // 
             // AnimalCRUD
             // 

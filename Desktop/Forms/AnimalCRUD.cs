@@ -281,10 +281,7 @@ namespace Desktop.Forms
             DisplayAliveAnimal();
         }
 
-        private void viewAllAnimals_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
 
         //private void BtnAnimalschedule_Click(object sender, EventArgs e)

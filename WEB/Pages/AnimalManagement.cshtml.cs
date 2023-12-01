@@ -11,6 +11,7 @@ namespace WEB.Pages
     {
         private readonly UserManager _userManager;
         private readonly AnimalManager _animalManager;
+
         public AnimalManagementModel()
         {
             _userManager = new UserManager(new UserDataAccess());
@@ -18,20 +19,18 @@ namespace WEB.Pages
         }
 
         public List<Animal> AvailableAnimals { get; set; }
-        public Animal Name { get; set; }
-        public Animal AnimalType { get; set; }
-        public Animal AliveAnimals { get; set; }
 
         public void OnGet()
         {
             AvailableAnimals = _animalManager.GetAllAliveAnimals();
-            // Populate the AvailableAnimals property
         }
 
-        public IActionResult OnGetAssign(int animalId)
+    
+
+        public IActionResult OnGetAnimalDetails(int animalId)
         {
-            // Logic to assign caretaker to the selected animal
-            return RedirectToPage("./AnimalManagement");
+            // Redirect to the AnimalDetails page with the selected animalId
+            return RedirectToPage("/AnimalDetails", new { animalId });
         }
     }
 }
