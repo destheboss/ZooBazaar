@@ -57,26 +57,6 @@ namespace Desktop.Forms
             LbDate.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(month) + " " + year;
         }
 
-        private void Btnschedule_Click(object sender, EventArgs e)
-        {
-            AutoScheduleform form = new AutoScheduleform(this);
-            form.ShowDialog();
-        }
-
-        private void BtnPrevious_Click(object sender, EventArgs e)
-        {
-            DayContainer.Controls.Clear();
-            if (month == 1)
-            {
-                year--;
-                month = 12;
-            }
-            else
-            {
-                month--;
-            }
-            DisplayDays();
-        }
         public void RefreshInvoke()
         {
             if (Visible)
@@ -92,7 +72,14 @@ namespace Desktop.Forms
                 }
             }
         }
-        private void BtnNext_Click(object sender, EventArgs e)
+
+        private void Btnschedule_Click_1(object sender, EventArgs e)
+        {
+            AutoScheduleform form = new AutoScheduleform(this);
+            form.ShowDialog();
+        }
+
+        private void BtnNext_Click_1(object sender, EventArgs e)
         {
             DayContainer.Controls.Clear();
             if (month == 12)
@@ -107,5 +94,21 @@ namespace Desktop.Forms
 
             DisplayDays();
         }
+
+        private void BtnPrevious_Click_1(object sender, EventArgs e)
+        {
+            DayContainer.Controls.Clear();
+            if (month == 1)
+            {
+                year--;
+                month = 12;
+            }
+            else
+            {
+                month--;
+            }
+            DisplayDays();
+        }
+
     }
 }

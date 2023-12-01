@@ -44,30 +44,6 @@ namespace Desktop.Forms
             }
         }
 
-        private void TbxFilterAssigned_TextChanged(object sender, EventArgs e)
-        {
-            List<Employee> Employees = employeeManager.GetallAvailableEmployees(SelectedShift);
-            LbxAvailable.Items.Clear();
-            List<Employee> Filtered = Employees.Where(x => (x.FirstName.Trim().ToLower() + " " + x.LastName.Trim().ToLower()).Contains(TbxFilterAssigned.Text.ToLower())).ToList();
-            foreach (var t in Filtered)
-            {
-                LbxAssigned.Items.Add(t);
-            }
-
-        }
-
-        private void TbxFilterAvailable_TextChanged(object sender, EventArgs e)
-        {
-            List<Employee> Employees = employeeManager.GetallAvailableEmployees(SelectedShift);
-            LbxAvailable.Items.Clear();
-            List<Employee> Filtered = Employees.Where(x => (x.FirstName.Trim().ToLower() + " " + x.LastName.Trim().ToLower()).Contains(TbxFilterAvailable.Text.ToLower())).ToList();
-            foreach (var t in Filtered)
-            {
-                LbxAvailable.Items.Add(t);
-            }
-
-        }
-
         private void BtnAssign_Click_1(object sender, EventArgs e)
         {
             if (LbxAvailable.SelectedItem != null && LbxAvailable.SelectedItem is Employee)
@@ -101,6 +77,28 @@ namespace Desktop.Forms
             else
             {
                 MessageBox.Show("Please select an employee to unassign");
+            }
+        }
+
+        private void TbxFilterAvailable_TextChanged_1(object sender, EventArgs e)
+        {
+            List<Employee> Employees = employeeManager.GetallAvailableEmployees(SelectedShift);
+            LbxAvailable.Items.Clear();
+            List<Employee> Filtered = Employees.Where(x => (x.FirstName.Trim().ToLower() + " " + x.LastName.Trim().ToLower()).Contains(TbxFilterAvailable.Text.ToLower())).ToList();
+            foreach (var t in Filtered)
+            {
+                LbxAvailable.Items.Add(t);
+            }
+        }
+
+        private void TbxFilterAssigned_TextChanged_1(object sender, EventArgs e)
+        {
+            List<Employee> Employees = employeeManager.GetallAvailableEmployees(SelectedShift);
+            LbxAvailable.Items.Clear();
+            List<Employee> Filtered = Employees.Where(x => (x.FirstName.Trim().ToLower() + " " + x.LastName.Trim().ToLower()).Contains(TbxFilterAssigned.Text.ToLower())).ToList();
+            foreach (var t in Filtered)
+            {
+                LbxAssigned.Items.Add(t);
             }
         }
     }
