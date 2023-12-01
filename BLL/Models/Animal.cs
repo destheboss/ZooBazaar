@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace BLL.Models
 
         public AnimalLocation AnimalLocation { get; private set; }
 
-        //public AnimalStatus AnimalStatus { get; private set; }
+        public AnimalStatus AnimalStatus { get; private set; }
 
         public Animal() { }
 
@@ -35,7 +36,7 @@ namespace BLL.Models
             SetAnimalName(animalName);
         }
 
-        public Animal(int id, string animalName, DateTime dateOfBirth, decimal animalWeight, AnimalType animalType, AnimalLocation animalLocation/*AnimalStatus animalStatus*/)
+        public Animal(int id, string animalName, DateTime dateOfBirth, decimal animalWeight, AnimalType animalType, AnimalLocation animalLocation, AnimalStatus animalStatus)
         {
             Id = id;
             SetAnimalName(animalName);
@@ -43,8 +44,18 @@ namespace BLL.Models
             SetAnimalWeight(animalWeight);
             AnimalType = animalType;
             AnimalLocation = animalLocation;
-            //AnimalStatus = animalStatus;
+            AnimalStatus = animalStatus;
         }
+        public Animal(int id, string animalName, DateTime dateOfBirth, decimal animalWeight, AnimalType animalType, AnimalLocation animalLocation)
+        {
+            Id = id;
+            SetAnimalName(animalName);
+            SetDateOfBirth(dateOfBirth);
+            SetAnimalWeight(animalWeight);
+            AnimalType = animalType;
+            AnimalLocation = animalLocation;
+        }
+
 
         public void SetAnimalName(string animalName)
         {

@@ -30,7 +30,9 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                 
+                            <li class="nav-item mt-1">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Profile">Profile</a>
+                            </li>
                         }
                         else
                         {
