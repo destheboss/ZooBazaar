@@ -26,7 +26,7 @@ namespace WEB.Pages
         {
             creds = cm.ReadCredentials();
 
-            foreach (var item in creds)
+            foreach (var item in creds) 
             {
                 bool isMatch = BCryptNet.Verify(cred.HashPass, item.HashPass);
                 if (isMatch == true && item.EmpID == cred.EmpID)

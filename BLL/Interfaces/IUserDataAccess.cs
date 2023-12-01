@@ -15,6 +15,7 @@ namespace BLL.Interfaces
         Employee? GetEmployeeById(int id);
         List<Employee> GetAllEmployees();
         bool UpdateEmployee(Employee employee);
+        void EmployeeSelfUpdate(int Id, string Email, int PhoneNumber, string City, string Street, string ZipCode, string HouseNumber);
         bool DeleteEmployee(int id);
         //DESKTOP AUTHENTICATION
         void SetSetting(string key, dynamic? value);
