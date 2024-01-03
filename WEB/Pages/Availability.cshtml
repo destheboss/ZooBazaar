@@ -1,0 +1,109 @@
+﻿@page
+@model WEB.Pages.AvailabilityModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Availability</title>
+    <style>
+        .day-box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: #b7d7ff;
+        }
+
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+
+        .submit-button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+            .submit-button:hover {
+                background-color: #0056b3;
+            }
+
+        .selected-day2 {
+            background-color: #ffd4d4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Schedule</h1>
+    <form method="post">
+        @if (Model.Availability == null)
+        {
+
+        }
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 1) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 1) ? "selected" : "")" data-day="1">Monday</div>
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 2) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 2) ? "selected" : "")" data-day="2">Tuesday</div>
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 3) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 3) ? "selected" : "")" data-day="3">Wednesday</div>
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 4) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 4) ? "selected" : "")" data-day="4">Thursday</div>
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 5) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 5) ? "selected" : "")" data-day="5">Friday</div>
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 6) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 6) ? "selected" : "")" data-day="6">Saturday</div>
+        <div class="day-box @((Model.Availability != null && Model.Availability.Day1 == 7) ? "selected" : "") @((Model.Availability != null && Model.Availability.Day2 == 7) ? "selected" : "")" data-day="7">Sunday</div>
+        <br>
+        <button class="submit-button" type="submit">Submit</button>
+        <input type="hidden" name="selectedDay1">
+        <input type="hidden" name="selectedDay2">
+    </form>
+    <script>
+        /* ... */
+    </script>
+
+    <script>
+        const dayBoxes = document.querySelectorAll('.day-box');
+        let selectedDays = [];
+
+        const dayBoxes = document.querySelectorAll('.day-box');
+        let selectedDays = [];
+
+        dayBoxes.forEach(dayBox => {
+            dayBox.addEventListener('click', () => {
+                if (selectedDays.length < 2) {
+                    const day = parseInt(dayBox.dataset.day);
+                    if (!selectedDays.includes(day)) {
+                        selectedDays.push(day);
+                        dayBox.classList.add('selected');
+                    }
+                }
+                if (selectedDays.length === 2) {
+                    dayBoxes.forEach(box => {
+                        const day = parseInt(box.dataset.day);
+                        if (!selectedDays.includes(day)) {
+                            box.classList.add('disabled');
+                        }
+                    });
+                }
+            });
+        });
+
+
+        document.querySelector('form').addEventListener('submit', () => {
+            document.querySelector('input[name="selectedDay1"]').value = selectedDays[0];
+            document.querySelector('input[name="selectedDay2"]').value = selectedDays[1];
+        });
+    </script>
+</body>
+</html>
+
