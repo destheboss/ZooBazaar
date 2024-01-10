@@ -1,0 +1,45 @@
+﻿@page
+@model WEB.Pages.TicketOrderModel
+@{
+}
+
+<section class="h-100 h-custom" style="background-color: transparent">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="round card">
+                    <img src="/img/Wombatjpg.jpg"
+                         class="w-100 image10"
+                         alt="Sample photo">
+                    <div class="registerround card-body green p-4 p-md-5">
+                        <h1 class="display-5 mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-light">Your Details</h1>
+
+                        <form class="mx-1 mx-md-4" method="post">
+
+                            <div class="d-flex flex-row align-items-center mb-1">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label text-light">Name</label>
+                                    <span asp-validation-for="Tickets.Name"></span>
+                                    <input asp-for="Tickets.Name" class="form-control form-control-sm">
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label text-light">Email</label>
+                                    <span asp-validation-for="Tickets.Email"></span>
+                                    <input asp-for="Tickets.Email" class="form-control form-control-sm">
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                <button type="submit" class="btn btn-outline-light">Order</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
