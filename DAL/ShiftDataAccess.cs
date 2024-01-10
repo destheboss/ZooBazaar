@@ -51,7 +51,15 @@ namespace DAL
                     string sql = "Select * from Shift where Date = @Date and shifttime = @shifttime";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@Date", date);
-                    cmd.Parameters.AddWithValue("@shifttime", shifttime);
+                    cmd.Parameters.AddWithValue("@shifttime", shifttime.ToString());
+
+                    // Add logging here
+                    Console.WriteLine("Executing query: " + cmd.CommandText);
+                    foreach (MySqlParameter param in cmd.Parameters)
+                    {
+                        Console.WriteLine("Parameter: " + param.ParameterName + ", Value: " + param.Value);
+                    }
+
                     MySqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
@@ -68,6 +76,7 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("Error: " + ex.Message);
                     return null;
                 }
                 finally
@@ -249,6 +258,35 @@ namespace DAL
                 catch (Exception ex)
                 {
 
+                    throw;
+                }
+                finally
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+        }
+
+        public int GetAmountAssignedToShiftTime(DateTime date, Shifttime shifttime)
+        {
+            using (var conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    conn.Open();
+                    var sql = @"
+                SELECT COUNT(*) 
+                FROM `shift_has_employee` she
+                INNER JOIN `shift` s ON she.ShiftId = s.id
+                WHERE s.Date = @Date AND s.shifttime = @Shifttime";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@Shifttime", shifttime.ToString());
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+                catch (Exception ex)
+                {
                     throw;
                 }
                 finally

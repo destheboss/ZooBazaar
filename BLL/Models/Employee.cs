@@ -48,7 +48,7 @@ namespace BLL.Models
         }
         public override string ToString()
         {
-            return $"{FirstName} {LastName}";
+            return $"Role: {Role}, ID: {Id}";
         }
     }
 }

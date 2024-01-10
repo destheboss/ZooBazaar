@@ -19,5 +19,6 @@ namespace BLL.Interfaces
         public List<Shift> GetShiftsBetweenDates(DateTime Start, DateTime end);
         public List<Shift> GetAllShifts();
         public List<Shift> GetAllShiftsByemp(int Empid);
+        public int GetAmountAssignedToShiftTime(DateTime date, Shifttime shifttime);
     }
 }

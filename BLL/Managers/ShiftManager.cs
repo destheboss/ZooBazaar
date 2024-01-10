@@ -48,5 +48,10 @@ namespace BLL.Managers
         {
             return shiftDataAccess.GetShiftsBetweenDates(Start, end);
         }
+
+        public int GetAmountAssignedToShiftTime(DateTime date, Shifttime shifttime)
+        {
+            return shiftDataAccess.GetAmountAssignedToShiftTime(date, shifttime);
+        }
     }
 }

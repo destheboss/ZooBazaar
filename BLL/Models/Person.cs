@@ -54,5 +54,10 @@ namespace BLL.Models
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
         }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }

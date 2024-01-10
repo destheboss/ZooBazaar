@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Enum = System.Enum;
 
 namespace BLL.Models.AutoSchedule
 {
@@ -14,10 +15,17 @@ namespace BLL.Models.AutoSchedule
         private readonly AnimalShiftManager ASM;
         private readonly ShiftManager SM;
         private readonly UserManager EM;
+        private const int requiredEmployeesPerShift = 2;
 
-        public AutoScheduler(AnimalShiftManager aSM, ShiftManager sM, UserManager eM)
+        //public AutoScheduler(AnimalShiftManager aSM, ShiftManager sM, UserManager eM)
+        //{
+        //    ASM = aSM;
+        //    SM = sM;
+        //    EM = eM;
+        //}
+
+        public AutoScheduler(ShiftManager sM, UserManager eM)
         {
-            ASM = aSM;
             SM = sM;
             EM = eM;
         }
@@ -29,41 +37,42 @@ namespace BLL.Models.AutoSchedule
         {
             try
             {
-                List<AnimalShift> Animalshifts = ASM.GetAnimalShifts();
+                //List<AnimalShift> Animalshifts = ASM.GetAnimalShifts();
 
-                Animalshifts = Animalshifts.Where(X => X.TimeShift.Date >= StartDate.Date && X.TimeShift.Date <= EndDate.Date || X.ShiftType == Enums.ANimalshiftStatus.Repeat).ToList();
+                //Animalshifts = Animalshifts.Where(X => X.TimeShift.Date >= StartDate.Date && X.TimeShift.Date <= EndDate.Date || X.ShiftType == Enums.ANimalshiftStatus.Repeat).ToList();
 
                 List<Employee> Employees = EM.GetAllEmployees();
 
                 List<Shift> shifts = SM.GetShiftsBetweenDates(StartDate, EndDate);
 
-                int daysBetweenDates = (EndDate.DayOfYear - StartDate.DayOfYear);
+                int daysBetweenDates = (EndDate - StartDate).Days + 1;
 
                 if (shifts.Count != daysBetweenDates * 3) // check if all shifts are here already
                 {
-                    for (int i = 0; i < daysBetweenDates; i++) // create them if not
+                    for (int i = 0; i < daysBetweenDates; i++)
                     {
-                        List<Shift> TodaysShifts = shifts.Where(X => X.Date.Date == StartDate.AddDays(i).Date).ToList();
-                        if (TodaysShifts.FirstOrDefault(X => X.Shifttime == Enums.Shifttime.Morning) == null)
+                        DateTime currentDate = StartDate.AddDays(i);
+
+                        // Get all shifts for the current day once instead of querying three times
+                        List<Shift> todaysShifts = shifts.Where(s => s.Date.Date == currentDate.Date).ToList();
+
+                        foreach (Enums.Shifttime shiftTime in Enum.GetValues(typeof(Enums.Shifttime)))
                         {
-                            Shift Shift = new Shift(StartDate.AddDays(i), Enums.Shifttime.Morning);
-                            SM.Create(Shift, out int id);
-                            Shift.Id = id;
-                            shifts.Add(Shift);
-                        }
-                        if (TodaysShifts.FirstOrDefault(X => X.Shifttime == Enums.Shifttime.AfterNoon) == null)
-                        {
-                            Shift Shift = new Shift(StartDate.AddDays(i), Enums.Shifttime.AfterNoon);
-                            SM.Create(Shift, out int id);
-                            Shift.Id = id;
-                            shifts.Add(Shift);
-                        }
-                        if (TodaysShifts.FirstOrDefault(X => X.Shifttime == Enums.Shifttime.Evening) == null)
-                        {
-                            Shift Shift = new Shift(StartDate.AddDays(i), Enums.Shifttime.Evening);
-                            SM.Create(Shift, out int id);
-                            Shift.Id = id;
-                            shifts.Add(Shift);
+                            // Check if a shift for the current shift time already exists
+                            if (!todaysShifts.Any(s => s.Shifttime == shiftTime))
+                            {
+                                // If it doesn't exist, create the shift
+                                Shift newShift = new Shift(currentDate, shiftTime);
+                                if (SM.Create(newShift, out int id)) // Only add to the list if creation is successful
+                                {
+                                    newShift.Id = id;
+                                    shifts.Add(newShift);
+                                }
+                                else
+                                {
+                                    throw new Exception($"Error creating shift");
+                                }
+                            }
                         }
                     }
                 }
@@ -72,7 +81,8 @@ namespace BLL.Models.AutoSchedule
 
                 foreach (Shift Chosen in shifts)
                 {
-                    int Requirement = GetRequirement(Animalshifts, Chosen);
+                    //int Requirement = GetRequirement(Animalshifts, Chosen); Original method
+                    int Requirement = GetRequirement(Chosen);
                     Chosen.Employee = EM.GetAllAssignedEmployees(Chosen);
                     ShiftRequirements.Add(Chosen, Requirement);
                 }
@@ -86,7 +96,7 @@ namespace BLL.Models.AutoSchedule
                         List<Employee> BestsuitedCaretaker = GetBestSuitedEmployees(Employees, Requirement.Key.Date, Role.Caretaker);
                         foreach (Employee employee in Assignedcaretaker)
                         {
-                            BestsuitedCaretaker.Where(X => X.Id != employee.Id);
+                            BestsuitedCaretaker = BestsuitedCaretaker.Where(X => X.Id != employee.Id).ToList();
 
                         }
                         int stillrequired = Requirement.Value - Assignedcaretaker.Count();
@@ -124,34 +134,50 @@ namespace BLL.Models.AutoSchedule
                 return 0;
             }
         }
-        private int GetRequirement(List<AnimalShift> Shifts, Shift Chosen)
+
+        private int GetRequirement(Shift Chosen)
         {
-            DateTime Starttime = Chosen.Date.AddHours(4);
             switch (Chosen.Shifttime)
             {
+                case Enums.Shifttime.Morning:
+                    return requiredEmployeesPerShift;
                 case Enums.Shifttime.AfterNoon:
-                    Starttime = Starttime.AddHours(6);
-                    break;
+                    return requiredEmployeesPerShift;
                 case Enums.Shifttime.Evening:
-                    Starttime = Starttime.AddHours(12);
-                    break;
+                    return requiredEmployeesPerShift;
                 default:
-                    break;
+                    throw new ArgumentOutOfRangeException(nameof(Chosen.Shifttime), "Invalid shift time.");
             }
-
-            List<AnimalShift> RQ = Shifts.Where(X => X.TimeShift.Date == Starttime.Date && X.TimeShift.Hour >= Starttime.Hour && X.TimeShift.Hour <= Starttime.AddHours(6).Hour).ToList();
-            List<int> Maxsizelist = new List<int>();
-            for (int i = 0; i < 6; i++)
-            {
-                List<AnimalShift> intermediate = RQ.Where(X => X.TimeShift.Hour == Starttime.AddHours(i).Hour).ToList();
-                Maxsizelist.Add(intermediate.Count);
-            }
-            if (Maxsizelist != null)
-            {
-                return Maxsizelist.Max();
-            }
-            return 0;
         }
+
+        //private int GetRequirement(List<AnimalShift> Shifts, Shift Chosen)
+        //{
+        //    DateTime Starttime = Chosen.Date.AddHours(4);
+        //    switch (Chosen.Shifttime)
+        //    {
+        //        case Enums.Shifttime.AfterNoon:
+        //            Starttime = Starttime.AddHours(6);
+        //            break;
+        //        case Enums.Shifttime.Evening:
+        //            Starttime = Starttime.AddHours(12);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+
+        //    List<AnimalShift> RQ = Shifts.Where(X => X.TimeShift.Date == Starttime.Date && X.TimeShift.Hour >= Starttime.Hour && X.TimeShift.Hour <= Starttime.AddHours(6).Hour).ToList();
+        //    List<int> Maxsizelist = new List<int>();
+        //    for (int i = 0; i < 6; i++)
+        //    {
+        //        List<AnimalShift> intermediate = RQ.Where(X => X.TimeShift.Hour == Starttime.AddHours(i).Hour).ToList();
+        //        Maxsizelist.Add(intermediate.Count);
+        //    }
+        //    if (Maxsizelist != null)
+        //    {
+        //        return Maxsizelist.Max();
+        //    }
+        //    return 0;
+        //}
 
         private List<Employee> GetBestSuitedEmployees(List<Employee> AllEmployees, DateTime date, Role role)
         {
@@ -168,7 +194,7 @@ namespace BLL.Models.AutoSchedule
                     Empscores.Add(I, i + s);
 
                     i -= 0.1;
-                    if (Doesemployeehavemaxhours(I, firstdayofweek))
+                    if (DoesEmployeeHaveMaxHours(I, firstdayofweek))
                     {
 
                         Empscores.Remove(I);
@@ -196,13 +222,12 @@ namespace BLL.Models.AutoSchedule
                 return null;
             }
         }
-        public bool Doesemployeehavemaxhours(int E, DateTime Startofweek) // check max hours
+        public bool DoesEmployeeHaveMaxHours(int E, DateTime Startofweek)
         {
             int maxhours = 40;
             int hoursthisweek = 0;
             hoursthisweek = EM.DoesEmployeehaveMaxHours(Startofweek, E) * 6;
             return hoursthisweek >= maxhours;
-
         }
     }
 }
