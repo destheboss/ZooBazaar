@@ -13,13 +13,13 @@ namespace WEB.Pages
         public Availability Availability { get; set; }
         public void OnGet()
         {
-            int userId = Convert.ToInt32(User.FindFirstValue("id"));
-            Availability = AvailabilityManager.GetAvailability(userId);
+            int id = Convert.ToInt32(User.FindFirst("EmpID").Value);
+            Availability = AvailabilityManager.GetAvailability(id);
         }
         public void OnPost(int selectedDay1, int selectedDay2)
         {
-            int userId = Convert.ToInt32(User.FindFirstValue("id"));
-            Availability availability = new Availability(selectedDay1, selectedDay2, userId);
+            int id = Convert.ToInt32(User.FindFirst("EmpID").Value);
+            Availability availability = new Availability(selectedDay1, selectedDay2, id);
             AvailabilityManager.AddAvailability(availability);
         }
     }

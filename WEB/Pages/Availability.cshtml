@@ -2,6 +2,7 @@
 @model WEB.Pages.AvailabilityModel
 @{
 }
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,14 +68,7 @@
         <input type="hidden" name="selectedDay1">
         <input type="hidden" name="selectedDay2">
     </form>
-    <script>
-        /* ... */
-    </script>
-
-    <script>
-        const dayBoxes = document.querySelectorAll('.day-box');
-        let selectedDays = [];
-
+     <script>
         const dayBoxes = document.querySelectorAll('.day-box');
         let selectedDays = [];
 
@@ -97,7 +91,6 @@
                 }
             });
         });
-
 
         document.querySelector('form').addEventListener('submit', () => {
             document.querySelector('input[name="selectedDay1"]').value = selectedDays[0];
