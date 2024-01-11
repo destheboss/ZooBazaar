@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Interfaces;
 
 namespace BLL.Managers
 {
@@ -18,5 +19,6 @@ namespace BLL.Managers
         public Shift? GetShift(DateTime date, Shifttime shifttime);
         public List<Shift> GetShiftsBetweenDates(DateTime Start, DateTime end);
         public List<Shift> GetAllShiftByEmp(int empid);
+        public int GetAmountAssignedToShiftTime(DateTime date, Shifttime shifttime);
     }
 }
