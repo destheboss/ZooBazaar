@@ -120,16 +120,34 @@ namespace ZooBazaar
 
         private void btnDeleteType_Click(object sender, EventArgs e)
         {
-			if (dataGridView2.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
-				int id = Convert.ToInt16(selectedRow.Cells["Id"].Value);
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+                    int id = Convert.ToInt16(selectedRow.Cells["Id"].Value);
 
-				Atm.RemoveTypeFromDB(id);
+                    // Check if there are any animals associated with the type
+                    if (!Atm.AreAnimalsOfTypeExist(id))
+                    {
+                        Atm.RemoveTypeFromDB(id);
 
-				dataGridView2.DataSource = Atm.LoadTypes().DefaultView;
-			}
-		}
+                        // Refresh data after deletion
+                        dataGridView2.DataSource = Atm.LoadTypes().DefaultView;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot delete type. There are animals associated with this type.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log the error or handle it appropriately
+                    Console.WriteLine($"Error deleting type: {ex.Message}");
+                    MessageBox.Show("An error occurred while deleting the type. Please check the logs for details.");
+                }
+            }
+        }
 
         private void cbMainType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -143,16 +161,34 @@ namespace ZooBazaar
 
         private void btnDeleteLocation_Click_1(object sender, EventArgs e)
         {
-			if (dataGridView1.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-				int id = Convert.ToInt16(selectedRow.Cells["Id"].Value);
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                    int id = Convert.ToInt16(selectedRow.Cells["Id"].Value);
 
-				Lm.RemoveLocationFromDB(id);
-
-				dataGridView1.DataSource = Lm.LoadLocations().DefaultView;
-			}
-		}
+                    // Check if there are any child locations
+                    if (Lm.AreChildLocationsExist(id))
+                    {
+                        MessageBox.Show("Cannot delete location. There are child locations associated with this location.");
+                    }
+                    else if (!Lm.AreAnimalsInLocationExist(id))
+                    {
+                        Lm.RemoveLocationFromDB(id);
+                        dataGridView1.DataSource = Lm.LoadLocations().DefaultView;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot delete location. There are animals associated with this location.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting location: {ex.Message}");
+                }
+            }
+        }
 
         private void btnRefreshLocation_Click_1(object sender, EventArgs e)
         {

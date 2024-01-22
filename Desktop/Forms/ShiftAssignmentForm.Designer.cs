@@ -62,6 +62,7 @@
             this.TbxFilterAssigned.Name = "TbxFilterAssigned";
             this.TbxFilterAssigned.Size = new System.Drawing.Size(255, 23);
             this.TbxFilterAssigned.TabIndex = 4;
+            this.TbxFilterAssigned.TextChanged += new System.EventHandler(this.TbxFilterAssigned_TextChanged_1);
             // 
             // label3
             // 
@@ -125,6 +126,7 @@
             this.TbxFilterAvailable.Name = "TbxFilterAvailable";
             this.TbxFilterAvailable.Size = new System.Drawing.Size(255, 23);
             this.TbxFilterAvailable.TabIndex = 3;
+            this.TbxFilterAvailable.TextChanged += new System.EventHandler(this.TbxFilterAvailable_TextChanged_1);
             // 
             // label2
             // 

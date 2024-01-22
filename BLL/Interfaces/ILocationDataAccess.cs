@@ -16,5 +16,8 @@ namespace BLL.Interfaces
 		public List<AnimalLocation> ReadLocations();
 		public DataTable LoadLocations();
 		public List<AnimalLocation> ReadSubLocations();
-	}
+		bool AreAnimalsInLocationExist(int locationId);
+		bool AreChildLocationsExist(int parentId);
+
+    }
 }

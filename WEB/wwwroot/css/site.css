@@ -65,3 +65,11 @@ header {
     padding-left: 400px;
     padding-right: 400px;
 }
+
+.green {
+    background-color: #004600;
+}
+.round {
+    border-radius: 10px;
+    background-color: #004600;
+}

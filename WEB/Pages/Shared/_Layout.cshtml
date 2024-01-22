@@ -12,29 +12,43 @@
 
 
 
-	<header>
-		<nav class="navbar navbar-expand-sm navbar-dark site-header border-bottom sticky-top">
-			<div class="container">
-				<a class="nav-link text-light align-content-center" asp-area="" asp-page="/Index">Zoo</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar" aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="n_bar">
-					<ul class="navbar-nav nav-fill w-100">
-						<li class="nav-item mt-1"><a class="nav-link text-light" asp-area="" asp-page="/Ticket">Buy Tickets</a></li>
-						@if (User.Identity.IsAuthenticated)
-						{
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Profile">Profile</a></li>
-						}
-						else
-						{
-							<li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/login">Log in</a></li>
-						}
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark site-header border-bottom sticky-top">
+            <div class="container">
+                <a class="nav-link text-light align-content-center" asp-area="" asp-page="/Index">Zoo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar" aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="n_bar">
+                    <ul class="navbar-nav nav-fill w-100">
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Ticket">Buy Tickets</a>
+                        </li>
+                      
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-light" asp-area="" asp-page="/AnimalManagement">Animal Management</a>
+                        </li>
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Availability">Availability</a>
+                        </li>
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-light" asp-area="" asp-page="/EmployeeSchedule">My Schedule</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item mt-1">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Profile">Profile</a>
+                            </li>
+                        }
+                        else
+                        {
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/login">Log in</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 
 	<div class="container">
@@ -57,3 +71,8 @@
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+                     @*   <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Schedule">My Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/AnimalShift">Animal Shift</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/LeaveRequestHome">Leave Request</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Availability">Availability</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" asp-area="" asp-page="/Logout">Log out</a></li>*@

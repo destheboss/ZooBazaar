@@ -16,5 +16,7 @@ namespace BLL.Interfaces
 		public List<AnimalType> ReadAnimalTypes();
 		public DataTable LoadTypes();
 		public List<AnimalType> ReadSubAnimalTypes();
-	}
+		bool AreAnimalsOfTypeExist(int typeId);
+
+    }
 }

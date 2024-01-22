@@ -1,0 +1,80 @@
+﻿@page
+@model WEB.Pages.EmployeeScheduleModel
+@{
+}
+
+<h2>Your schedule for @Model.monday.ToString("dd/MM/yyyy") - @Model.sunday.ToString("dd/MM/yyyy")</h2>
+<br>
+<br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered border-dark text-center">
+            <thead>
+                <tr class="bg-light-gray">
+                    <th class="text-uppercase">
+                        Time
+                    </th>
+                    <th class="text-uppercase">Monday</th>
+                    <th class="text-uppercase">Tuesday</th>
+                    <th class="text-uppercase">Wednesday</th>
+                    <th class="text-uppercase">Thursday</th>
+                    <th class="text-uppercase">Friday</th>
+                    <th class="text-uppercase">Saturday</th>
+                    <th class="text-uppercase">Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="align-middle">Morning</td>
+                    @for (int i = 0; i < 7; i++)
+                    {
+                        <td>
+                            @if (Model.Hasshift[i])
+                            {
+                                <img class="check" src="/img/green.png" width="50" height="50">
+                            }
+                            else
+                            {
+                                <div class="bg-light-gray"></div>
+                            }
+                        </td>
+                    }
+                </tr>
+
+                <tr>
+                    <td class="align-middle">Afternoon</td>
+                    @for (int i = 7; i < 14; i++)
+                    {
+                        <td>
+                            @if (Model.Hasshift[i])
+                            {
+                                <img class="check" src="/img/green.png" width="50" height="50">
+                            }
+                            else
+                            {
+                                <div class="bg-light-gray"></div>
+                            }
+                        </td>
+                    }
+                </tr>
+
+                <tr>
+                    <td class="align-middle">Evening</td>
+                    @for (int i = 14; i < 21; i++)
+                    {
+                        <td>
+                            @if (Model.Hasshift[i])
+                            {
+                                <img class="check" src="/img/green.png" width="50" height="50">
+                            }
+                            else
+                            {
+                                <div class="bg-light-gray"></div>
+                            }
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

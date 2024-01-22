@@ -1,0 +1,47 @@
+﻿@page
+@model WEB.Pages.CaretakerModel
+<html>
+<head>
+	<title>Caretaker Dashboard</title>
+</head>
+<body>
+	<h1>Welcome, @Model.FirstName!</h1>
+
+	<h2>Basic Information:</h2>
+	<p>Contact Info: @Model.Email</p>
+	<p>Role: @Model.EmployeeRole</p>
+
+	@*<h2>Assigned Tasks:</h2>
+	<ul>
+		@if (Model.AssignedTasks == null || !Model.AssignedTasks.Any())
+		{
+			<h3>No tasks yet!</h3>
+		}
+		else
+		{
+			@foreach (var task in Model.AssignedTasks)
+			{
+				<li>@task.TaskDescription - Due: @task.DueDate</li>
+			}
+		}
+	</ul>*@
+
+	<h2>Add or Edit Notes:</h2>
+	@*    <form method="post">
+	<textarea rows="4" cols="50" asp-for="AnimalNotes"></textarea>
+	</form>*@
+
+	<form asp-page-handler="Note" class="mx-1 mx-md-4" method="post">
+
+		<div class="d-flex flex-row align-items-center mb-1">
+			<div class="form-outline flex-fill mb-0">
+@*				<label asp-for="AnimalNotes.Note" class="form-label text-dark"></label>
+*@				<span asp-validation-for="AnimalNotes.Note"></span>
+				<input asp-for="AnimalNotes.Note" class="form-control form-control-lg">
+				
+				<button class="btn btn-primary btn-lg mt-2" type="submit">Save Note</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

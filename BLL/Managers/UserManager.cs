@@ -43,7 +43,7 @@ namespace BLL.Managers
         public bool DeleteEmployee(int id) { 
             return data.DeleteEmployee(id); 
         }
-//<<<<<<< BLL/Managers/UserManager.cs
+
         public int DoesEmployeehaveMaxHours(DateTime startofweek, int empid)
         {
             return data.DoesEmployeehaveMaxHours(startofweek, empid);

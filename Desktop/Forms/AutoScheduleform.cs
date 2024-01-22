@@ -19,7 +19,6 @@ namespace Desktop.Forms
         private readonly AnimalShiftManager ASM;
         private readonly ShiftManager SM;
         private readonly UserManager EM;
-
         public AutoScheduleform(ShiftForm form)
         {
             InitializeComponent();

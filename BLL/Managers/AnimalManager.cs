@@ -33,6 +33,10 @@ namespace BLL.Managers
         {
             return animalData.GetAnimalById(animalId);
         }
+        public List<Animal> SearchAnimalsByName(string searchTerm)
+        {
+            return animalData.SearchAnimalsByName(searchTerm);
+        }
 
         public bool AddAnimal(Animal animal)
         {
@@ -47,6 +51,18 @@ namespace BLL.Managers
         public bool UpdateAnimal(Animal animal)
         {
             return animalData.UpdateAnimal(animal);
+        }
+        public bool AddNote(AnimalNotes newnote)
+        {
+            return animalData.AddNote(newnote);
+        }
+        public List<BLL.Models.Task> GetIncompleteTasks(int employeeId)
+        {
+            return animalData.GetIncompleteTasks(employeeId);
+        }
+        public List<AnimalNotes> GetNotesByAnimalId(int animalId)
+        {
+            return animalData.GetNotesByAnimalId((int)animalId);
         }
     }
 }

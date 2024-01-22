@@ -72,9 +72,56 @@ namespace Desktop.Forms
             DisplayEmployee();
         }
 
-        private void btnSaveInfo_Click(object sender, EventArgs e)
-        {
 
+        private void buttonEdit_Click_1(object sender, EventArgs e)
+        {
+            if (dgvEmployee.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvEmployee.SelectedRows[0];
+
+                tbFirstNameEdit.Text = selectedRow.Cells["FirstName"].Value.ToString();
+                tbLastNameEdit.Text = selectedRow.Cells["LastName"].Value.ToString();
+                tbPhoneNumberEdit.Text = selectedRow.Cells["PhoneNumber"].Value.ToString();
+                tbEmailEdit.Text = selectedRow.Cells["Email"].Value.ToString();
+                tbWageEdit.Text = selectedRow.Cells["Wage"].Value.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to edit.");
+            }
+        }
+
+        private void tbSearchName_TextChanged_1(object sender, EventArgs e)
+        {
+            dgvEmployee.Rows.Clear();
+            List<Employee> FilteredEmployees = employees1.Where(X => (X.FirstName.Trim().ToLower() + " " + X.LastName.Trim().ToLower()).Contains(tbSearchName.Text.Trim().ToLower())).ToList();
+            foreach (Employee emp in FilteredEmployees)
+            {
+                int rowIndex = dgvEmployee.Rows.Add();
+                dgvEmployee.Rows[rowIndex].Cells["Id"].Value = emp.Id;
+                dgvEmployee.Rows[rowIndex].Cells["FirstName"].Value = emp.FirstName;
+                dgvEmployee.Rows[rowIndex].Cells["LastName"].Value = emp.LastName;
+                dgvEmployee.Rows[rowIndex].Cells["PhoneNumber"].Value = emp.PhoneNumber.ToString();
+                dgvEmployee.Rows[rowIndex].Cells["Email"].Value = emp.Email;
+                dgvEmployee.Rows[rowIndex].Cells["Wage"].Value = emp.Wage.ToString();
+                dgvEmployee.Rows[rowIndex].Cells["Bsn"].Value = emp.Bsn.ToString();
+                dgvEmployee.Rows[rowIndex].Cells["Role"].Value = emp.Role;
+            }
+        }
+
+		private void btnAddProfile_Click(object sender, EventArgs e)
+		{
+            int empID = Convert.ToInt32(tbID.Text);
+            string pass = tbPass.Text;
+            string salt = BCryptNet.GenerateSalt();
+            string hashPass = BCryptNet.HashPassword(pass, salt);
+
+            cm.AddProfile(empID, hashPass, salt);
+		}
+
+        private void btnSaveInfo_Click_1(object sender, EventArgs e)
+        {
             if (dgvEmployee.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select an animal to edit.");
@@ -111,75 +158,8 @@ namespace Desktop.Forms
             }
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+        private void btnCreateEmployee_Click_1(object sender, EventArgs e)
         {
-            if (dgvEmployee.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvEmployee.SelectedRows[0];
-
-                tbFirstNameEdit.Text = selectedRow.Cells["FirstName"].Value.ToString();
-                tbLastNameEdit.Text = selectedRow.Cells["LastName"].Value.ToString();
-                tbPhoneNumberEdit.Text = selectedRow.Cells["PhoneNumber"].Value.ToString();
-                tbEmailEdit.Text = selectedRow.Cells["Email"].Value.ToString();
-                tbWageEdit.Text = selectedRow.Cells["Wage"].Value.ToString();
-
-            }
-            else
-            {
-                MessageBox.Show("Please select an employee to edit.");
-            }
-        }
-
-        private void btnDeleteEmployee_Click(object sender, EventArgs e)
-        {
-            if (dgvEmployee.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvEmployee.SelectedRows[0];
-                int employeeId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
-                string employeeName = Convert.ToString(selectedRow.Cells["FirstName"].Value);
-
-                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to remove employee with Name: {employeeName}?", "Confirm Deletion",
-                    MessageBoxButtons.YesNo);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    bool result = userManager.DeleteEmployee(employeeId);
-                        if (result)
-                        {
-                            MessageBox.Show("Employee removed successfully.");
-                            Refresh();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to remove employee.");
-                        }
-                }
-            }
-            Refresh();
-        }
-
-        private void cbRoleSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbRoleSearch.SelectedIndex == -1) return;
-
-            dgvEmployee.Rows.Clear();
-            foreach (Employee employee in employees1.Where(emp => cbRoleSearch.SelectedIndex == 0 || emp.Role == (Role)(cbRoleSearch.SelectedIndex - 1)))
-            {
-                int rowIndex = dgvEmployee.Rows.Add();
-                dgvEmployee.Rows[rowIndex].Cells["Id"].Value = employee.Id;
-                dgvEmployee.Rows[rowIndex].Cells["FirstName"].Value = employee.FirstName;
-                dgvEmployee.Rows[rowIndex].Cells["LastName"].Value = employee.LastName;
-                dgvEmployee.Rows[rowIndex].Cells["PhoneNumber"].Value = employee.PhoneNumber.ToString();
-                dgvEmployee.Rows[rowIndex].Cells["Email"].Value = employee.Email;
-                dgvEmployee.Rows[rowIndex].Cells["Wage"].Value = employee.Wage.ToString();
-                dgvEmployee.Rows[rowIndex].Cells["Bsn"].Value = employee.Bsn.ToString();
-                dgvEmployee.Rows[rowIndex].Cells["Role"].Value = employee.Role;
-            }
-        }
-
-        private void btnCreateEmployee_Click(object sender, EventArgs e)
-        {
-
             try
             {
                 Role role = (Role)cbRole.SelectedItem;
@@ -198,32 +178,32 @@ namespace Desktop.Forms
                     Employee Save = new Employee(0, tbEmail.Text, tbPassword.Text, tbFirstName.Text, tbLastName.Text, Convert.ToInt32(nudPhoneNumber.Text)
                          , Convert.ToInt32(nudBSN.Value), Convert.ToInt32(nudWage.Value), role, tbCity.Text,
                          tbStreet.Text, tbZipCode.Text, nudHouseNumber.Text);
-                    
-                        lbInfo.Visible = false;
-                        bool employeeCreated = userManager.CreateEmployee(Save);
-                        if (employeeCreated)
+
+                    lbInfo.Visible = false;
+                    bool employeeCreated = userManager.CreateEmployee(Save);
+                    if (employeeCreated)
+                    {
+                        lbAccountCreate.Visible = true;
+
+                        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                        timer.Interval = 5000;
+                        timer.Tick += (sender, e) =>
                         {
-                            lbAccountCreate.Visible = true;
+                            lbAccountCreate.Visible = false;
+                            timer.Stop();
+                            timer.Dispose();
+                        };
+                        timer.Start();
 
-                            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-                            timer.Interval = 5000;
-                            timer.Tick += (sender, e) =>
-                            {
-                                lbAccountCreate.Visible = false;
-                                timer.Stop();
-                                timer.Dispose();
-                            };
-                            timer.Start();
-
-                            tbFirstName.Clear();
-                            tbLastName.Clear();
-                            tbEmail.Clear();
-                            tbPassword.Clear();
-                            tbZipCode.Clear();
-                            tbCity.Clear();
-                            tbStreet.Clear();
-                            //tbBankAccount.Clear();
-                        }
+                        tbFirstName.Clear();
+                        tbLastName.Clear();
+                        tbEmail.Clear();
+                        tbPassword.Clear();
+                        tbZipCode.Clear();
+                        tbCity.Clear();
+                        tbStreet.Clear();
+                        //tbBankAccount.Clear();
+                    }
                 }
             }
             catch
@@ -232,39 +212,51 @@ namespace Desktop.Forms
             }
         }
 
-        
-
-        private void buttonEdit_Click_1(object sender, EventArgs e)
+        private void cbRoleSearch_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            if (cbRoleSearch.SelectedIndex == -1) return;
 
-        }
-
-        private void tbSearchName_TextChanged_1(object sender, EventArgs e)
-        {
             dgvEmployee.Rows.Clear();
-            List<Employee> FilteredEmployees = employees1.Where(X => (X.FirstName.Trim().ToLower() + " " + X.LastName.Trim().ToLower()).Contains(tbSearchName.Text.Trim().ToLower())).ToList();
-            foreach (Employee emp in FilteredEmployees)
+            foreach (Employee employee in employees1.Where(emp => cbRoleSearch.SelectedIndex == 0 || emp.Role == (Role)(cbRoleSearch.SelectedIndex - 1)))
             {
                 int rowIndex = dgvEmployee.Rows.Add();
-                dgvEmployee.Rows[rowIndex].Cells["Id"].Value = emp.Id;
-                dgvEmployee.Rows[rowIndex].Cells["FirstName"].Value = emp.FirstName;
-                dgvEmployee.Rows[rowIndex].Cells["LastName"].Value = emp.LastName;
-                dgvEmployee.Rows[rowIndex].Cells["PhoneNumber"].Value = emp.PhoneNumber.ToString();
-                dgvEmployee.Rows[rowIndex].Cells["Email"].Value = emp.Email;
-                dgvEmployee.Rows[rowIndex].Cells["Wage"].Value = emp.Wage.ToString();
-                dgvEmployee.Rows[rowIndex].Cells["Bsn"].Value = emp.Bsn.ToString();
-                dgvEmployee.Rows[rowIndex].Cells["Role"].Value = emp.Role;
+                dgvEmployee.Rows[rowIndex].Cells["Id"].Value = employee.Id;
+                dgvEmployee.Rows[rowIndex].Cells["FirstName"].Value = employee.FirstName;
+                dgvEmployee.Rows[rowIndex].Cells["LastName"].Value = employee.LastName;
+                dgvEmployee.Rows[rowIndex].Cells["PhoneNumber"].Value = employee.PhoneNumber.ToString();
+                dgvEmployee.Rows[rowIndex].Cells["Email"].Value = employee.Email;
+                dgvEmployee.Rows[rowIndex].Cells["Wage"].Value = employee.Wage.ToString();
+                dgvEmployee.Rows[rowIndex].Cells["Bsn"].Value = employee.Bsn.ToString();
+                dgvEmployee.Rows[rowIndex].Cells["Role"].Value = employee.Role;
             }
         }
 
-		private void btnAddProfile_Click(object sender, EventArgs e)
-		{
-            int empID = Convert.ToInt32(tbID.Text);
-            string pass = tbPass.Text;
-            string salt = BCryptNet.GenerateSalt();
-            string hashPass = BCryptNet.HashPassword(pass, salt);
+        private void btnDeleteEmployee_Click_1(object sender, EventArgs e)
+        {
+            if (dgvEmployee.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvEmployee.SelectedRows[0];
+                int employeeId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+                string employeeName = Convert.ToString(selectedRow.Cells["FirstName"].Value);
 
-            cm.AddProfile(empID, hashPass, salt);
-		}
-	}
+                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to remove employee with Name: {employeeName}?", "Confirm Deletion",
+                    MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    bool result = userManager.DeleteEmployee(employeeId);
+                    if (result)
+                    {
+                        MessageBox.Show("Employee removed successfully.");
+                        Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to remove employee.");
+                    }
+                }
+            }
+            Refresh();
+        }
+    }
 }

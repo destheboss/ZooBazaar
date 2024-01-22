@@ -1,0 +1,40 @@
+﻿@page
+@model WEB.Pages.AnimalDetailsModel
+@{
+}
+<html>
+<head>
+	<title>Animal Details</title>
+</head>
+<body>
+	<h1>Animal Details</h1>
+
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="row gx-4 gx-lg-5 align-items-center">
+				<div class="col-md-6"><img class="card-img-top mb-4 mb-md-0" src="/img/animal.jpg"></div>
+				<div class="col-md-6">
+
+					<div class="small mb-1 text-dark">ID: @Model.AnimalDetails.Id</div>
+					<h1 class="display-5 fw-bolder text-dark">@Model.AnimalDetails.AnimalName</h1>
+
+					<div class="fs-5 mb-5">
+						<span class="text-dark">Weight: @Model.AnimalDetails.AnimalWeight</span>
+						<hr class="text-dark">
+						<span class="text-dark"> Date of birth: @Model.AnimalDetails.DateOfBirth.ToShortDateString()</</span>
+						<hr class="text-dark">
+						<span class="text-dark">Type: @Model.AnimalDetails.AnimalType</span>
+					</div>
+
+					<ul>
+						@foreach (var note in Model.AnimalNotes)
+						{
+							<li>@note.Note - Created: @note.CreatedAt.ToShortDateString()</li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
