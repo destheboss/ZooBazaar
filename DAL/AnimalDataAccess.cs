@@ -318,8 +318,6 @@ namespace DAL
         {
             List<AnimalNotes> noteList = new List<AnimalNotes>();
 
-            try
-            {
                 using (MySqlConnection con = ConnectionString.Connection())
                 {
                     string sqlQuery = "SELECT * FROM AnimalNotes WHERE AnimalId = @AnimalId";
@@ -343,6 +341,8 @@ namespace DAL
                         }
                     }
                 }
+            try
+            {
             }
             catch (MySqlException ex)
             {
