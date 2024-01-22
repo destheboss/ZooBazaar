@@ -32,17 +32,21 @@ namespace DAL
                         {
                             int id = Convert.ToInt32(rdr["Id"]);
                             string animalName = rdr["Name"].ToString();
+
+                            // Check if AnimalLocationId is DBNull.Value (even though it's not nullable)
                             int locationId = Convert.ToInt32(rdr["AnimalLocationId"]);
+
+                            // Check if AnimalTypeId is DBNull.Value (even though it's not nullable)
                             int animalTypeId = Convert.ToInt32(rdr["AnimalTypeId"]);
+
                             var weight = Convert.ToDecimal(rdr["Weight"]);
                             DateTime birthday = (DateTime)rdr["DateOfBirth"];
                             string animalTypeName = rdr["AnimalTypeName"].ToString();
                             string animalLocationName = rdr["AnimalLocationName"].ToString();
-                            //AnimalStatus animalStatus = (/*AnimalStatus*/)System.Enum.Parse(typeof(/*AnimalStatus*/), rdr["Status"].ToString());
 
                             AnimalType animalType = new AnimalType(animalTypeId, animalTypeName, null);
                             AnimalLocation animalLocation = new AnimalLocation(locationId, animalLocationName, null);
-                            Animal animal = new Animal(id, animalName, birthday, weight, animalType, animalLocation /*animalStatus*/);
+                            Animal animal = new Animal(id, animalName, birthday, weight, animalType, animalLocation);
 
                             animalList.Add(animal);
                         }
@@ -134,6 +138,52 @@ namespace DAL
                         }
                     }
                     return null;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("An error occurred while retrieving animals: " + ex.Message);
+                return null;
+            }
+        }
+
+        public List<Animal> SearchAnimalsByName(string searchTerm)
+        {
+            try
+            {
+                using (MySqlConnection con = ConnectionString.Connection())
+                {
+                    string sqlQuery = "SELECT a.Id, a.Name, a.Weight, a.DateOfBirth, at.Id AS AnimalTypeId, at.Name AS AnimalTypeName, al.Id AS AnimalLocationId, al.Name AS AnimalLocationName " +
+                        "FROM Animal as a " +
+                        "LEFT JOIN Animaltype as at ON a.AnimalTypeId = at.Id " +
+                        "LEFT JOIN Location as al ON a.LocationId = al.Id WHERE a.Name = @name";
+                    MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+                    cmd.Parameters.AddWithValue("@name", searchTerm);
+
+                    con.Open();
+                    List<Animal> searchResults = new List<Animal>();
+
+                    using (MySqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            int animalId = Convert.ToInt32(rdr["Id"]);
+                            int locationId = Convert.ToInt32(rdr["AnimalLocationId"]);
+                            int animalTypeId = Convert.ToInt32(rdr["AnimalTypeId"]);
+                            var weight = Convert.ToDecimal(rdr["Weight"]);
+                            DateTime birthday = (DateTime)rdr["DateOfBirth"];
+                            string animalTypeName = rdr["AnimalTypeName"].ToString();
+                            string animalLocationName = rdr["AnimalLocationName"].ToString();
+
+                            AnimalType animalType = new AnimalType(animalTypeId, animalTypeName, null);
+                            AnimalLocation animalLocation = new AnimalLocation(locationId, animalLocationName, null);
+                            Animal animal = new Animal(animalId, searchTerm, birthday, weight, animalType, animalLocation);
+
+                            searchResults.Add(animal);
+                        }
+                    }
+
+                    return searchResults;
                 }
             }
             catch (MySqlException ex)

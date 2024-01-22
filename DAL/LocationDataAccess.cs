@@ -68,7 +68,58 @@ namespace DAL
 			}
 		}
 
-		public void DeleteLocation(int id)
+        public bool AreAnimalsInLocationExist(int locationId)
+        {
+            try
+            {
+                using (MySqlConnection con = ConnectionString.Connection())
+                {
+                    string sqlQuery = "SELECT COUNT(*) FROM Animal WHERE LocationId = @LocationId";
+                    MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+                    cmd.Parameters.AddWithValue("@LocationId", locationId);
+
+                    con.Open();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("An error occurred while checking if animals in location exist: " + ex.Message);
+            }
+        }
+        public bool AreChildLocationsExist(int parentId)
+        {
+            using (var conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    string query = "SELECT COUNT(*) FROM location WHERE parentId = @parentId";
+                    MySqlCommand msqlcd = new MySqlCommand(query, conn);
+                    msqlcd.Parameters.AddWithValue("@parentId", parentId);
+
+                    conn.Open();
+
+                    // ExecuteScalar returns the first column of the first row as an object
+                    object result = msqlcd.ExecuteScalar();
+
+                    // Convert the result to an integer
+                    int count = Convert.ToInt32(result);
+
+                    return count > 0; // If there are child locations, count will be greater than 0
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+        public void DeleteLocation(int id)
 		{
 			MySqlCommand msqlcd;
 			using (var conn = ConnectionString.Connection())

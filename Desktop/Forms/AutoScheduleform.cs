@@ -19,7 +19,6 @@ namespace Desktop.Forms
         private readonly AnimalShiftManager ASM;
         private readonly ShiftManager SM;
         private readonly UserManager EM;
-
         public AutoScheduleform(ShiftForm form)
         {
             InitializeComponent();
@@ -36,7 +35,7 @@ namespace Desktop.Forms
                 MessageBox.Show("Start date cannot be after end date");
                 return;
             }
-            AutoScheduler Scheduler = new AutoScheduler(SM, EM);
+            AutoScheduler Scheduler = new AutoScheduler(ASM, SM, EM);
             var val = await Task.Run(() => Scheduler.Schedule(Dtpstartdate.Value, DtpEndDate.Value));
 
             if (val != null)

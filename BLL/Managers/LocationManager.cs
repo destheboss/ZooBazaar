@@ -31,8 +31,16 @@ namespace BLL.Managers
 		{
 			_lda.DeleteLocation(id);
 		}
+		public bool AreAnimalsInLocationExist(int locationId)
+		{
+			return _lda.AreAnimalsInLocationExist(locationId);
+		}
+		public bool AreChildLocationsExist(int parentId)
+		{
+			return _lda.AreChildLocationsExist(parentId);
+		}
 
-		public List<AnimalLocation> GetLocations()
+        public List<AnimalLocation> GetLocations()
 		{
 			List<AnimalLocation> location = _lda.ReadLocations();
 			return location;

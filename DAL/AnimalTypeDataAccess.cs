@@ -12,36 +12,53 @@ namespace DAL
 {
 	public class AnimalTypeDataAccess : IAnimalTypeDataAccess
 	{
-		public void AddChildAnimalType(string name, int? parentId)
-		{
-			MySqlCommand msqlcd;
+        public void AddChildAnimalType(string name, int? parentId)
+        {
+            using (var conn = ConnectionString.Connection())
+            {
+                try
+                {
+                    // Check if parentId exists in location table
+                    if (parentId.HasValue)
+                    {
+                        string checkParentQuery = "SELECT COUNT(*) FROM location WHERE id = @parentId";
+                        using (var checkParentCmd = new MySqlCommand(checkParentQuery, conn))
+                        {
+                            checkParentCmd.Parameters.AddWithValue("@parentId", parentId.Value);
 
-			using (var conn = ConnectionString.Connection())
-			{
-				try
-				{
-					string query = "INSERT INTO animaltype (name, parentId) VALUES (@name, @parentId)";
+                            conn.Open();
+                            int count = Convert.ToInt32(checkParentCmd.ExecuteScalar());
+                            conn.Close();
 
-					msqlcd = new MySqlCommand(query, conn);
-					msqlcd.Parameters.AddWithValue("@name", name);
-					msqlcd.Parameters.AddWithValue("@parentId", parentId);
-					conn.Open();
-					msqlcd.ExecuteNonQuery();
-					conn.Close();
-				}
-				catch (Exception)
-				{
-					throw;
-				}
-				finally
-				{
-					conn.Close();
-					conn.Dispose();
-				}
-			}
-		}
+                            if (count == 0)
+                            {
+                                // ParentId does not exist in location table, handle accordingly
+                                // Throw an exception or log an error
+                                throw new Exception("ParentId does not exist in the location table.");
+                            }
+                        }
+                    }
 
-		public void AddParentAnimalType(string name)
+                    // Insert into animaltype table
+                    string insertQuery = "INSERT INTO animaltype (name, parentId) VALUES (@name, @parentId)";
+                    using (var insertCmd = new MySqlCommand(insertQuery, conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@name", name);
+                        insertCmd.Parameters.AddWithValue("@parentId", parentId);
+
+                        conn.Open();
+                        insertCmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    // Handle exception appropriately
+                    throw;
+                }
+            }
+        }
+
+        public void AddParentAnimalType(string name)
 		{
 			MySqlCommand msqlcd;
 
@@ -68,8 +85,36 @@ namespace DAL
 				}
 			}
 		}
+        public bool AreAnimalsOfTypeExist(int typeId)
+        {
+            try
+            {
+                using (MySqlConnection con = ConnectionString.Connection())
+                {
+                    string sqlQuery = "SELECT COUNT(*) FROM Animal WHERE AnimalTypeId = @TypeId";
+                    using (MySqlCommand cmd = new MySqlCommand(sqlQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@TypeId", typeId);
 
-		public void DeleteType(int id)
+                        con.Open();
+                        if (int.TryParse(cmd.ExecuteScalar()?.ToString(), out int count))
+                        {
+                            return count > 0;
+                        }
+                        else
+                        {
+                            // Handle the case where the count is not a valid integer
+                            throw new Exception("Error converting count to integer.");
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("An error occurred while checking if animals of type exist: " + ex.Message);
+            }
+        }
+        public void DeleteType(int id)
 		{
 			MySqlCommand msqlcd;
 
