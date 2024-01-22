@@ -32,7 +32,7 @@ namespace BLL.Models
 
         public Tickets() { }
 
-        public Tickets(int id, string name, string email, string ticket, int month, int type, int used)
+        public Tickets(int id, string name, string email, string ticket, int type, int month, int used)
         {
             this.id = id;
             this.name = name;
