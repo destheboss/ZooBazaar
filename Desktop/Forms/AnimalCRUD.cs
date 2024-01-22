@@ -92,7 +92,7 @@ namespace Desktop.Forms
             viewAllAnimals_dgv.Columns.Add("Weight", "Weight");
             viewAllAnimals_dgv.Columns.Add("Location", "Location");
             viewAllAnimals_dgv.Columns.Add("DateOfBirth", "Date of Birth");
-           // viewAllAnimals_dgv.Columns.Add("AnimalStatus", "Animal Status");
+            // viewAllAnimals_dgv.Columns.Add("AnimalStatus", "Animal Status");
             foreach (Animal animal in animals)
             {
 
@@ -377,8 +377,8 @@ namespace Desktop.Forms
                 DtpDob.Value = Convert.ToDateTime(selectedRow.Cells["DateOfBirth"].Value);
                 //animalStatus_cb.SelectedIndex = animalStatus_cb.FindStringExact(selectedRow.Cells["AnimalStatus"].Value.ToString());
 
-                addAnimal_btn.Hide();
-                removeAnimal_btn.Hide();
+                //addAnimal_btn.Hide();
+                //removeAnimal_btn.Hide();
                 saveAnimal_btn.Show();
             }
             else
@@ -458,6 +458,46 @@ namespace Desktop.Forms
             else
             {
                 MessageBox.Show("Please select an animal to view its notes.");
+            }
+        }
+
+        private void saveAnimal_btn_Click(object sender, EventArgs e)
+        {
+            if (viewAllAnimals_dgv.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an animal to edit.");
+                return;
+            }
+
+            try
+            {
+                int animalId = Convert.ToInt32(viewAllAnimals_dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var animal = new Animal(animalId, name_tb.Text, DtpDob.Value, Convert.ToDecimal(weight_tb.Text),
+                                        (AnimalType)animalType_cb.SelectedItem, (AnimalLocation)animalLocation_cb.SelectedItem)
+                                        /*(AnimalStatus)animalStatus_cb.SelectedItem)*/;
+
+                var animalManager = new AnimalManager(new AnimalDataAccess());
+                var result = animalManager.UpdateAnimal(animal);
+
+                if (!result)
+                {
+                    MessageBox.Show("Failed to update animal information.");
+                }
+                else
+                {
+                    DisplayAliveAnimal();
+                    ResetAnimalField();
+                    saveAnimal_btn.Hide();
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid weight.");
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

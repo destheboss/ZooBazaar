@@ -67,7 +67,7 @@ namespace WEB.Pages
 
 			foreach (Tickets t in tickets)
 			{
-				if (t.Month == 1)
+				if (t.Month  == 1)
 				{
 					January++;
 				}

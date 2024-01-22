@@ -38,7 +38,6 @@
             btnEmployees = new Button();
             panelLogo = new Panel();
             btnHome = new Button();
-            btnAnimalShift = new Button();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             SuspendLayout();
@@ -56,7 +55,6 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(0, 70, 0);
-            panelMenu.Controls.Add(btnAnimalShift);
             panelMenu.Controls.Add(btnEmployeeShifts);
             panelMenu.Controls.Add(btnLocationAndType);
             panelMenu.Controls.Add(btnLogOut);
@@ -203,27 +201,6 @@
             btnHome.Text = "Home";
             btnHome.UseVisualStyleBackColor = false;
             // 
-            // btnAnimalShift
-            // 
-            btnAnimalShift.BackColor = Color.FromArgb(0, 70, 0);
-            btnAnimalShift.Cursor = Cursors.Hand;
-            btnAnimalShift.Dock = DockStyle.Top;
-            btnAnimalShift.FlatAppearance.BorderSize = 0;
-            btnAnimalShift.FlatStyle = FlatStyle.Flat;
-            btnAnimalShift.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAnimalShift.ForeColor = Color.White;
-            btnAnimalShift.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAnimalShift.Location = new Point(0, 266);
-            btnAnimalShift.Margin = new Padding(3, 2, 3, 2);
-            btnAnimalShift.Name = "btnAnimalShift";
-            btnAnimalShift.Padding = new Padding(10, 0, 0, 0);
-            btnAnimalShift.Size = new Size(216, 45);
-            btnAnimalShift.TabIndex = 10;
-            btnAnimalShift.Text = "Animal Shift Overview";
-            btnAnimalShift.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAnimalShift.UseVisualStyleBackColor = false;
-            btnAnimalShift.Click += btnAnimalShift_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -249,6 +226,5 @@
         private Button btnHome;
         private Button btnLocationAndType;
         private Button btnEmployeeShifts;
-        private Button btnAnimalShift;
     }
 }

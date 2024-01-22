@@ -23,6 +23,8 @@ namespace ZooBazaar
 		public LocationAndAnimalTypeForm()
         {
             InitializeComponent();
+            dataGridView1.DataSource = Lm.LoadLocations().DefaultView;
+            dataGridView2.DataSource = Atm.LoadTypes().DefaultView;
         }
 
         private void LocationAndAnimalTypeForm_Load(object sender, EventArgs e)
@@ -33,7 +35,9 @@ namespace ZooBazaar
 			cbMainLocation.Hide();
 			label1.Hide();
 			cbMainType.Hide();
-		}
+            dataGridView1.DataSource = Lm.LoadLocations().DefaultView;
+            dataGridView2.DataSource = Atm.LoadTypes().DefaultView;
+        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
