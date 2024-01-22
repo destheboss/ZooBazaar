@@ -33,6 +33,10 @@ namespace BLL.Managers
         {
             return animalData.GetAnimalById(animalId);
         }
+        public List<Animal> SearchAnimalsByName(string searchTerm)
+        {
+            return animalData.SearchAnimalsByName(searchTerm);
+        }
 
         public bool AddAnimal(Animal animal)
         {

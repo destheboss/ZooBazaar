@@ -31,7 +31,12 @@ namespace BLL.Managers
 		{
 			_atda.DeleteType(id);
 		}
-		public List<AnimalType> GetAnimalTypes()
+		public bool AreAnimalsOfTypeExist(int typeId)
+		{
+			return _atda.AreAnimalsOfTypeExist(typeId);
+		}
+
+        public List<AnimalType> GetAnimalTypes()
 		{
 			List<AnimalType> type = _atda.ReadAnimalTypes();
 			return type;

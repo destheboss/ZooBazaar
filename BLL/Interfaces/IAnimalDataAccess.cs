@@ -18,6 +18,7 @@ namespace BLL.Interfaces
         List<BLL.Models.Task> GetIncompleteTasks(int employeeId);
         bool AddNote(AnimalNotes newnote);
         List<AnimalNotes> GetNotesByAnimalId(int animalId);
+        List<Animal> SearchAnimalsByName(string searchTerm);
 
 
 
