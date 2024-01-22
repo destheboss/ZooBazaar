@@ -37,6 +37,14 @@ namespace Desktop.Forms.ShiftNeccessities
             _afternoonshift = _manager.GetShift(_current, Shifttime.AfterNoon);
             _evening = _manager.GetShift(_current, Shifttime.Evening);
 
+            int morningAssigned = _morningshift != null ? _manager.GetAmountassigned(_morningshift) : 0;
+            int afternoonAssigned = _afternoonshift != null ? _manager.GetAmountassigned(_afternoonshift) : 0;
+            int eveningAssigned = _evening != null ? _manager.GetAmountassigned(_evening) : 0;
+
+            BtnMorning.Text = $"Morning {morningAssigned}/4";
+            btnafternoon.Text = $"Afternoon {afternoonAssigned}/4";
+            btnEvening.Text = $"Evening {eveningAssigned}/3";
+
             if (_morningshift != null)
             {
                 switch (_manager.GetAmountassigned(_morningshift))
@@ -73,7 +81,7 @@ namespace Desktop.Forms.ShiftNeccessities
             {
                 switch (_manager.GetAmountassigned(_evening))
                 {
-                    case > 3:
+                    case >= 3:
                         btnEvening.BackColor = Color.Green;
                         break;
                     case < 3:
