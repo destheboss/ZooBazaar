@@ -21,6 +21,10 @@ namespace Desktop.Forms
         public CredentialsManager cm = new CredentialsManager(new CredentialsDataAccess());
         private List<Role> roles = new List<Role>();
         private List<Employee> employees1;
+        private bool isContractCreated = false;
+
+
+        public int SelectedContractId { get; set; }
         public EmployeeManagement(Employee employee)
         {
 
@@ -110,15 +114,15 @@ namespace Desktop.Forms
             }
         }
 
-		private void btnAddProfile_Click(object sender, EventArgs e)
-		{
+        private void btnAddProfile_Click(object sender, EventArgs e)
+        {
             int empID = Convert.ToInt32(tbID.Text);
             string pass = tbPass.Text;
             string salt = BCryptNet.GenerateSalt();
             string hashPass = BCryptNet.HashPassword(pass, salt);
 
             cm.AddProfile(empID, hashPass, salt);
-		}
+        }
 
         private void btnSaveInfo_Click_1(object sender, EventArgs e)
         {
@@ -156,8 +160,28 @@ namespace Desktop.Forms
             {
                 MessageBox.Show(ex.Message);
             }
-        }
 
+        }
+        private void Employees_Load(object sender, EventArgs e)
+        {
+            CheckContractStatus();
+        }
+        private void CheckContractStatus()
+        {
+            if (isContractCreated)
+            {
+                btnCreateEmployee.Enabled = true;
+            }
+            else
+            {
+                btnCreateEmployee.Enabled = false;
+            }
+        }
+        public void HandleContractCreation()
+        {
+            isContractCreated = true;
+            CheckContractStatus();
+        }
         private void btnCreateEmployee_Click_1(object sender, EventArgs e)
         {
             try
@@ -177,32 +201,38 @@ namespace Desktop.Forms
                 {
                     Employee Save = new Employee(0, tbEmail.Text, tbPassword.Text, tbFirstName.Text, tbLastName.Text, Convert.ToInt32(nudPhoneNumber.Text)
                          , Convert.ToInt32(nudBSN.Value), Convert.ToInt32(nudWage.Value), role, tbCity.Text,
-                         tbStreet.Text, tbZipCode.Text, nudHouseNumber.Text);
-
-                    lbInfo.Visible = false;
-                    bool employeeCreated = userManager.CreateEmployee(Save);
-                    if (employeeCreated)
+                         tbStreet.Text, tbZipCode.Text, nudHouseNumber.Text, SelectedContractId);
+                    if (isContractCreated)
                     {
-                        lbAccountCreate.Visible = true;
-
-                        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-                        timer.Interval = 5000;
-                        timer.Tick += (sender, e) =>
+                        lbInfo.Visible = false;
+                        bool employeeCreated = userManager.CreateEmployee(Save);
+                        if (employeeCreated)
                         {
-                            lbAccountCreate.Visible = false;
-                            timer.Stop();
-                            timer.Dispose();
-                        };
-                        timer.Start();
+                            lbAccountCreate.Visible = true;
 
-                        tbFirstName.Clear();
-                        tbLastName.Clear();
-                        tbEmail.Clear();
-                        tbPassword.Clear();
-                        tbZipCode.Clear();
-                        tbCity.Clear();
-                        tbStreet.Clear();
-                        //tbBankAccount.Clear();
+                            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                            timer.Interval = 5000;
+                            timer.Tick += (sender, e) =>
+                            {
+                                lbAccountCreate.Visible = false;
+                                timer.Stop();
+                                timer.Dispose();
+                            };
+                            timer.Start();
+
+                            tbFirstName.Clear();
+                            tbLastName.Clear();
+                            tbEmail.Clear();
+                            tbPassword.Clear();
+                            tbZipCode.Clear();
+                            tbCity.Clear();
+                            tbStreet.Clear();
+                            //tbBankAccount.Clear();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Contract must be created first.");
                     }
                 }
             }
@@ -257,6 +287,15 @@ namespace Desktop.Forms
                 }
             }
             Refresh();
+        }
+
+        private void btnAddContract_Click(object sender, EventArgs e)
+        {
+            var ContractPage = new ContractPage(true);
+
+            this.Hide();
+            ContractPage.ShowDialog();
+            this.Show();
         }
     }
 }

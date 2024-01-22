@@ -5,24 +5,39 @@
 
 <h2>Your schedule for @Model.monday.ToString("dd/MM/yyyy") - @Model.sunday.ToString("dd/MM/yyyy")</h2>
 <br>
+<form method="post" asp-page-handler="PreviousWeek">
+    <button type="submit" class="btn btn-primary">Previous Week</button>
+</form>
+<form method="post" asp-page-handler="NextWeek">
+    <button type="submit" class="btn btn-primary">Next Week</button>
+</form>
+
 <br>
 <div class="container">
-    <div class="table-responsive">
+        <div class="table-responsive">
         <table class="table table-bordered border-dark text-center">
-            <thead>
-                <tr class="bg-light-gray">
-                    <th class="text-uppercase">
-                        Time
-                    </th>
-                    <th class="text-uppercase">Monday</th>
-                    <th class="text-uppercase">Tuesday</th>
-                    <th class="text-uppercase">Wednesday</th>
-                    <th class="text-uppercase">Thursday</th>
-                    <th class="text-uppercase">Friday</th>
-                    <th class="text-uppercase">Saturday</th>
-                    <th class="text-uppercase">Sunday</th>
-                </tr>
-            </thead>
+            <tbody>
+                    <tr>
+                        <td class="align-middle">Time</td>
+                        @for (int i = 0; i < 7; i++)
+                        {
+                            <td>
+                                <div class="date">
+                                    <div>@(Model.monday.AddDays(i).ToString("dddd"))</div>
+                                    <div>@(Model.monday.AddDays(i).ToString("dd/MM/yyyy"))</div>
+                                </div>
+                                @if (Model.Hasshift[i])
+                                {
+                                    <img class="check" src="/img/green.png" alt="Check" />
+                                }
+                                else
+                                {
+                                    <div class="bg-light-gray"></div>
+                                }
+                            </td>
+                        }
+                    </tr>
+                </tbody>
             <tbody>
                 <tr>
                     <td class="align-middle">Morning</td>
@@ -78,3 +93,56 @@
         </table>
     </div>
 </div>
+
+
+       <style>
+       
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .align-middle {
+            vertical-align: middle;
+        }
+
+        .date {
+            font-weight: bold;
+        }
+
+        .bg-light-gray {
+            background-color: #f8f9fa;
+            height: 50px;
+        }
+
+        .check {
+            width: 50px;
+            height: 50px;
+        }
+    </style>

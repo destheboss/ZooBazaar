@@ -4,10 +4,32 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Availability</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
         .day-box {
             width: 100px;
             height: 100px;
@@ -16,9 +38,12 @@
             text-align: center;
             line-height: 100px;
             cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
-        .selected {
+        .selected, .selected-day2 {
             background-color: #b7d7ff;
         }
 
@@ -27,10 +52,9 @@
             cursor: not-allowed;
         }
 
-
         .submit-button {
             display: block;
-            margin-top: 10px;
+            margin-top: 20px;
             padding: 10px;
             background-color: #007bff;
             color: white;
@@ -38,19 +62,19 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+            
         }
 
             .submit-button:hover {
                 background-color: #0056b3;
             }
-
-        .selected-day2 {
-            background-color: #ffd4d4;
-        }
     </style>
 </head>
 <body>
-    <h1>Employee Schedule</h1>
+    <header>
+        <h1>Choose when you are not available</h1>
+    </header>
     <form method="post">
         @if (Model.Availability == null)
         {
@@ -68,7 +92,7 @@
         <input type="hidden" name="selectedDay1">
         <input type="hidden" name="selectedDay2">
     </form>
-     <script>
+    <script>
         const dayBoxes = document.querySelectorAll('.day-box');
         let selectedDays = [];
 
@@ -99,4 +123,3 @@
     </script>
 </body>
 </html>
-
