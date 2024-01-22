@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,14 @@ namespace BLL.Managers
             _tda = tda;
         }
 
-        public void AddTicket(string name, string email, string ticket)
+        public void AddTicket(string name, string email, string ticket, int type, int month)
         {
-            _tda.AddTicket(name, email, ticket);
+            _tda.AddTicket(name, email, ticket, type, month);
+        }
+
+        public List<Tickets> GetAllTickets()
+        {
+            return _tda.GetAllTickets();
         }
     }
 }

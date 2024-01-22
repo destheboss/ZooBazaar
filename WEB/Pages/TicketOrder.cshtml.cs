@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Mail;
 using System.Net;
+using System.Globalization;
 
 namespace WEB.Pages
 {
@@ -19,9 +20,12 @@ namespace WEB.Pages
 
         public IActionResult OnPost()
         {
-            string ticket = GenerateRandomString(5);
+            string ticket = GenerateRandomString(10);
 
-            tm.AddTicket(Tickets.Name, Tickets.Email, ticket);
+			DateTime currentDate = DateTime.Now;
+			int monthNumber = currentDate.Month;
+
+			tm.AddTicket(Tickets.Name, Tickets.Email, ticket, Tickets.Type, monthNumber);
 
             string emailSubject = "Order Confirmation";
 
@@ -98,5 +102,5 @@ namespace WEB.Pages
                 throw;
             }
         }
-    }
+	}
 }
