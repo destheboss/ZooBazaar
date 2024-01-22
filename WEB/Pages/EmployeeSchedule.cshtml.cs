@@ -2,11 +2,13 @@ using BLL.Enums;
 using BLL.Managers;
 using BLL.Models.AutoSchedule;
 using DAL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WEB.Pages
 {
+    [Authorize]
     public class EmployeeScheduleModel : PageModel
     {
 		public DateTime monday { get; set; }
@@ -58,6 +60,26 @@ namespace WEB.Pages
 			}
 			Hasshift = hasShiftNow;
 		}
-		
-	}
+        public IActionResult OnPostNextWeek()
+        {
+            int skipWeek = Request.Cookies.ContainsKey("skipweek") ? Convert.ToInt32(Request.Cookies["skipweek"]) : 0;
+
+            skipWeek++;
+
+            Response.Cookies.Append("skipweek", skipWeek.ToString());
+
+            return RedirectToPage();
+        }
+        public IActionResult OnPostPreviousWeek()
+        {
+            int skipWeek = Request.Cookies.ContainsKey("skipweek") ? Convert.ToInt32(Request.Cookies["skipweek"]) : 0;
+
+            skipWeek--;
+
+            Response.Cookies.Append("skipweek", skipWeek.ToString());
+
+            return RedirectToPage();
+        }
+
+    }
 }

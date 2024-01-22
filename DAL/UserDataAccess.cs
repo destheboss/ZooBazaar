@@ -26,8 +26,8 @@ namespace DAL
                 try
                 {
                     Conn.Open();
-                    string sql = "INSERT INTO employee (id, email, password, firstName, lastName, phoneNumber, bsn, wage, role, city, street, zipCode, houseNumber) " +
-                        "values (@id, @email, @password, @firstName, @lastName, @phoneNumber, @bsn, @wage, @role, @city, @street, @zipCode, @houseNumber)";
+                    string sql = "INSERT INTO employee (id, email, password, firstName, lastName, phoneNumber, bsn, wage, role, city, street, zipCode, houseNumber, contractId) " +
+                        "values (@id, @email, @password, @firstName, @lastName, @phoneNumber, @bsn, @wage, @role, @city, @street, @zipCode, @houseNumber,@contractId)";
 
                     var cmd = new MySqlCommand(sql, Conn);
 
@@ -44,6 +44,8 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@street", employee.Street);
                     cmd.Parameters.AddWithValue("@zipCode", employee.ZipCode);
                     cmd.Parameters.AddWithValue("@houseNumber", employee.HouseNumber);
+                    cmd.Parameters.AddWithValue("@contractId", employee.ContractId);
+
                     return cmd.ExecuteNonQuery() > 0;
                 }
                 catch (MySqlException ex)

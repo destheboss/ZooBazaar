@@ -15,6 +15,7 @@ namespace BLL.Models
         private string street;
         private string zipCode;
         private string houseNumber;
+        private int contractId;
         public int Bsn { get => this.bsn; set => this.bsn = value; }
         public double Wage { get => this.wage; set => this.wage = value; }
         public Role Role { get => this.role; set => this.role = value; }
@@ -22,6 +23,8 @@ namespace BLL.Models
         public string Street { get => this.street; set => this.street = value; }
         public string ZipCode { get => this.zipCode; set => this.zipCode = value; }
         public string HouseNumber { get => this.houseNumber; set => this.houseNumber = value; }
+        public int ContractId { get => this.contractId; set => this.contractId = value; }
+
 
 
         public Employee() 
@@ -39,6 +42,20 @@ namespace BLL.Models
             this.Street = street;
             this.ZipCode = zipCode;
             this.HouseNumber = houseNumber;
+        }
+        public Employee(int id, string email, string password, string firstName, string lastName,
+             int phoneNumber, int bsn, double wage, Role role, string city,
+             string street, string zipCode, string houseNumber, int contractId)
+            : base(id, email, password, firstName, lastName, phoneNumber)
+        {
+            this.Bsn = bsn;
+            this.Wage = wage;
+            this.Role = role;
+            this.City = city;
+            this.Street = street;
+            this.ZipCode = zipCode;
+            this.HouseNumber = houseNumber;
+            this.ContractId = contractId;
         }
         public Employee(int id, string firstName, string lastName, int phoneNumber, string email, int wage)
             : base(id, email, firstName, lastName,  phoneNumber)
